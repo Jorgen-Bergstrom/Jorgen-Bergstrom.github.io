@@ -1,62 +1,140 @@
 baseURL: https://example.org/
 languageCode: en-us
-title: MegaMachineLearn
-theme: PaperMod
+languageName: English
+title: "MegaMachineLearn"
+theme: LoveIt
+copyright: MegaMachineLearn
 
-Params:
-  description: "Learn Machine Learning For Free."
-  autor: Jorgen Bergstrom
-  DateFormat: "2006-01-02" # it has to be this year and month and date
-  defaultTheme: auto # dark, light
-  disableThemeToggle: false
+enableRobotsTXT: true
+enableGitInfo: true
+enableEmoji: true
 
-  ShowReadingTime: true
-  ShowShareButtons: true
-  ShowPostNavLinks: true
-  ShowBreadCrumbs: true
-  ShowCodeCopyButtons: false
-  ShowWordCount: true
-  ShowRssButtonInSectionTermList: true
-  UseHugoToc: true
-  disableSpecial1stPost: false
-  disableScrollToTop: false
-  comments: false
-  hidemeta: false
-  hideSummary: false
-  showtoc: false
-  tocopen: false
-  math: true
+# pagination:
+#   disableAliases: false
+#   pagerSize: 10
+#   path: "page"
 
-homeInfoParams:
-  Title: "Hello Student"
-  Content: Welcome here
+params:
+  defaultTheme: "auto" # ["auto", "light", "dark"]
+  dateFormat: "2006-01-02"
+  title: "MegaMachineLearn"
+  description: "Teach yourself Machine Learning (ML) by example."
+  images: ["ML_icon_small.png"]
+  author:
+    name: 'Jorgen Bergstrom'
+  header:
+    desktopMode: "fixed" # desktop header mode ["fixed", "normal", "auto"]
+    mobileMode: "auto" # mobile header mode ["fixed", "normal", "auto"]
+    title:
+      logo: '/megaphone-JB_03.webp'
+      name: "MegaMachineLearn"
+      pre: ""
+      post: "" # you can add extra information after the name (HTML format is supported), such as icons
+      typeit: false # whether to use typeit animation for title name
+  footer:
+    enable: true
+    custom: ''
+    hugo: false # whether to show Hugo and theme info
+    copyright: true
+    author: true
+    since: 2025
+    license: ''
+  page:
+    math:
+      enable: true
+      copyTex: true0
+      mhchem: true
+    hiddenFromHomePage: false
+    hiddenFromSearch: false
+    twemoji: false
+    lightgallery: false
+    ruby: true
+    fraction: true
+    fontawesome: true
+    linkToMarkdown: true
+    rssFullText: false
+    toc:
+      enable: true
+      keepStatic: false
+      auto: true
+    code:
+      copy: true
+      maxShownLines: 50
+    mapbox:
+      accessToken: ""
+      lightStyle: "mapbox://styles/mapbox/light-v10?optimize=true"
+      darkStyle: "mapbox://styles/mapbox/dark-v10?optimize=true"
+      navigation: true
+      geolocate: true
+      scale: true
+      fullscreen: true
+    share:
+      enable: true
+      Twitter: true
+      Linkedin: false
+      Pinterest: false
+      Tumblr: false
+  search:
+    enable: true
+    type: "lunr" # type of search engine ["lunr", "algolia"]
+    contentLength: 4000 # max index length of the chunked content
+    placeholder: "" # placeholder of the search bar
+    maxResultLength: 10 # max number of results length
+    snippetLength: 30 # snippet length of the result
+    highlightTag: "em" # HTML tag name of the highlight part in results
+    absoluteURL: false # whether to use the absolute URL based on the baseURL in search index
+    algolia:
+      index: ""
+      appID: ""
+      searchKey: ""
+  home:
+    rss: 10 # amount of RSS pages
+    profile:
+      enable: true
+      gravatarEmail: "" # Gravatar Email for preferred avatar in home page
+      avatarURL: "ML_icon_small.png"
+      title: "MegaMachineLearn" # title shown in home page (HTML format is supported)
+      subtitle: "Teach yourself Machine Learning (ML) by example."
+      typeit: true # whether to use typeit animation for subtitle
+      social: true # whether to show social links
+      disclaimer: "" # disclaimer (HTML format is supported)
+    posts:
+      enable: true
+      paginate: 6 # special amount of posts in each home posts page
+      defaultHiddenFromHomePage: false # replaced with hiddenFromHomePage in params.page, default behavior when you don't set "hiddenFromHomePage" in front matter
+  social:
+    GitHub: "Jorgen-Bergstrom"
+    Linkedin: "JorgenSBergstrom"
+    Instagram: ""
+    Youtubelegacy: ""
+    Youtubecustom: ""
+    Youtubechannel: ""
+
 
 menu:
   main:
-    - identifier: categories
-      name: categories
-      url: /categories/
-      weight: 10
-    - identifier: tags
-      name: tags
-      url: /tags/
-      weight: 20
-    - identifier: example
-      name: example.org
-      url: https://example.org
-      weight: 30
+    - weight: 1
+      identifier: "posts"
+      pre: ""
+      post: ""
+      name: "Posts"
+      url: "/posts/"
+      title: ""
+    - weight: 2
+      identifier: "tags"
+      pre: ""
+      post: ""
+      name: "Tags"
+      url: "/tags/"
+      title: ""
+    - weight: 3
+      identifier: "categories"
+      pre: ""
+      post: ""
+      name: "Categories"
+      url: "/categories/"
+      title: ""
 
-markup:
-  goldmark:
-    extensions:
-      passthrough:
-        delimiters:
-          block:
-          - - \[
-            - \]
-          - - $$
-            - $$
-          inline:
-          - - \(
-            - \)
-        enable: true
+# markup:
+#   highlight:
+#     noClasses: false

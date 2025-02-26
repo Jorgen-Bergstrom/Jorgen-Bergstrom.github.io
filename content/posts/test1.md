@@ -15,8 +15,5 @@ Here is some info
 
 $$\sin(\alpha) = \pi$$.
 
-More text.
-
-\[ a^3 = b \cos(\alpha) \]
-
+More text: $ a^3 = b \cos(\alpha) $
 

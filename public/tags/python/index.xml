@@ -1,0 +1,18 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Python - Tag - MegaMachineLearn</title>
+        <link>http://localhost:1313/tags/python/</link>
+        <description>Python - Tag - MegaMachineLearn</description>
+        <generator>Hugo -- gohugo.io</generator><language>en-us</language><copyright>MegaMachineLearn</copyright><lastBuildDate>Tue, 25 Feb 2025 20:18:40 -0500</lastBuildDate><atom:link href="http://localhost:1313/tags/python/" rel="self" type="application/rss+xml" /><item>
+    <title>Set Up Python For ML</title>
+    <link>http://localhost:1313/posts/set_up_python_for_ml/</link>
+    <pubDate>Tue, 25 Feb 2025 20:18:40 -0500</pubDate>
+    <author>Jorgen Bergstrom</author>
+    <guid>http://localhost:1313/posts/set_up_python_for_ml/</guid>
+    <description><![CDATA[<blockquote>
+<p>This article explains how to set up a Python environment for use with Machine Learning</p></blockquote>
+<h2 id="background">Background</h2>
+<p>You can use any computer language for learning, coding, and solving  Machine Learning (ML) problems. The most common language to use is <a href="https://www.python.org/" target="_blank" rel="noopener noreffer ">Python</a>. The main reason for this is that there are many high quality libraries of ML algorithms already written and freely available for Python (e.g. <a href="https://pytorch.org/" target="_blank" rel="noopener noreffer ">PyTorch</a>, <a href="https://www.tensorflow.org/" target="_blank" rel="noopener noreffer ">TensorFlow</a>, and <a href="https://keras.io/" target="_blank" rel="noopener noreffer ">Keras</a>). This makes it really easy to get started and to try things out.</p>]]></description>
+</item>
+</channel>
+</rss>

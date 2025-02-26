@@ -1,25 +1,20 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
-  <channel>
-    <title>AI on MegaMachineLearn</title>
-    <link>http://localhost:1313/tags/ai/</link>
-    <description>Recent content in AI on MegaMachineLearn</description>
-    <generator>Hugo -- 0.144.2</generator>
-    <language>en-us</language>
-    <lastBuildDate>Tue, 25 Feb 2025 17:35:03 -0500</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/ai/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Test1</title>
-      <link>http://localhost:1313/posts/test1/</link>
-      <pubDate>Tue, 25 Feb 2025 17:35:03 -0500</pubDate>
-      <guid>http://localhost:1313/posts/test1/</guid>
-      <description>&lt;h2 id=&#34;this-is-a-test-article&#34;&gt;This is a test article&lt;/h2&gt;
-&lt;p&gt;some text here.&lt;/p&gt;
-&lt;h3 id=&#34;instructions&#34;&gt;Instructions&lt;/h3&gt;
-&lt;p&gt;Here is some info&lt;/p&gt;
-$$\sin(\alpha) = \pi$$&lt;p&gt;.&lt;/p&gt;
-&lt;p&gt;More text.&lt;/p&gt;
-\[ a^3 = b \cos(\alpha) \]</description>
-    </item>
-  </channel>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>AI - Tag - MegaMachineLearn</title>
+        <link>http://localhost:1313/tags/ai/</link>
+        <description>AI - Tag - MegaMachineLearn</description>
+        <generator>Hugo -- gohugo.io</generator><language>en-us</language><copyright>MegaMachineLearn</copyright><lastBuildDate>Tue, 25 Feb 2025 17:35:03 -0500</lastBuildDate><atom:link href="http://localhost:1313/tags/ai/" rel="self" type="application/rss+xml" /><item>
+    <title>Test1</title>
+    <link>http://localhost:1313/posts/test1/</link>
+    <pubDate>Tue, 25 Feb 2025 17:35:03 -0500</pubDate>
+    <author>Jorgen Bergstrom</author>
+    <guid>http://localhost:1313/posts/test1/</guid>
+    <description><![CDATA[<h2 id="this-is-a-test-article">This is a test article</h2>
+<p>some text here.</p>
+<h3 id="instructions">Instructions</h3>
+<p>Here is some info</p>
+<p>$$\sin(\alpha) = \pi$$.</p>
+<p>More text: $ a^3 = b \cos(\alpha) $</p>]]></description>
+</item>
+</channel>
 </rss>
