@@ -11,11 +11,18 @@
     <loc>http://localhost:1313/posts/test2/</loc>
     <lastmod>2025-02-25T17:35:08-05:00</lastmod>
   </url><url>
+    <loc>http://localhost:1313/tags/ai/</loc>
+    <lastmod>2025-02-25T17:35:03-05:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/ml/</loc>
+    <lastmod>2025-02-25T17:35:03-05:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/</loc>
+    <lastmod>2025-02-25T17:35:03-05:00</lastmod>
+  </url><url>
     <loc>http://localhost:1313/posts/test1/</loc>
     <lastmod>2025-02-25T17:35:03-05:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/categories/</loc>
-  </url><url>
-    <loc>http://localhost:1313/tags/</loc>
   </url>
 </urlset>

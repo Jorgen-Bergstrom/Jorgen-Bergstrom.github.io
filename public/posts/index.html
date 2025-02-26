@@ -57,6 +57,19 @@
 
     </style>
 </noscript>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+<script>
+  MathJax = {
+    tex: {
+      displayMath: [['\\[', '\\]'], ['$$', '$$']],  
+      inlineMath: [['\\(', '\\)']]                  
+    }
+  };
+</script>
+
+
+
+
 </head>
 
 <body class="list" id="top">
@@ -99,13 +112,42 @@
             </div>
         </div>
         <ul id="menu">
+            <li>
+                <a href="http://localhost:1313/categories/" title="categories">
+                    <span>categories</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/tags/" title="tags">
+                    <span>tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://example.org" title="example.org">
+                    <span>example.org</span>&nbsp;
+                    <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12">
+                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
+                        <path d="M15 3h6v6"></path>
+                        <path d="M10 14L21 3"></path>
+                    </svg>
+                </a>
+            </li>
         </ul>
     </nav>
 </header>
 <main class="main"> 
-<header class="page-header">
+<header class="page-header"><div class="breadcrumbs"><a href="http://localhost:1313/">Home</a></div>
   <h1>
     Posts
+    <a href="/posts/index.xml" title="RSS" aria-label="RSS">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round" height="23">
+        <path d="M4 11a9 9 0 0 1 9 9" />
+        <path d="M4 4a16 16 0 0 1 16 16" />
+        <circle cx="5" cy="19" r="1" />
+      </svg>
+    </a>
   </h1>
 </header>
 
@@ -115,10 +157,11 @@
     </h2>
   </header>
   <div class="entry-content">
-    <p>Here is another article Store comes here
+    <p>Here is another article Store comes here.
+This is interesting.
 </p>
   </div>
-  <footer class="entry-footer"><span title='2025-02-25 17:35:08 -0500 EST'>February 25, 2025</span></footer>
+  <footer class="entry-footer"><span title='2025-02-25 17:35:08 -0500 EST'>2025-02-25</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;10 words</footer>
   <a class="entry-link" aria-label="post link to Test2" href="http://localhost:1313/posts/test2/"></a>
 </article>
 
@@ -129,9 +172,12 @@
   </header>
   <div class="entry-content">
     <p>This is a test article some text here.
-</p>
+Instructions Here is some info
+$$\sin(\alpha) = \pi$$.
+More text.
+\[ a^3 = b \cos(\alpha) \]</p>
   </div>
-  <footer class="entry-footer"><span title='2025-02-25 17:35:03 -0500 EST'>February 25, 2025</span></footer>
+  <footer class="entry-footer"><span title='2025-02-25 17:35:03 -0500 EST'>2025-02-25</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;24 words</footer>
   <a class="entry-link" aria-label="post link to Test1" href="http://localhost:1313/posts/test1/"></a>
 </article>
     </main>
