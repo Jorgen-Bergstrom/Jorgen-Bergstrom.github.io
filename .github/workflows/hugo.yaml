@@ -26,6 +26,15 @@ defaults:
   run:
     shell: bash
 
+
+# JB: in order to have hugo accept html in md file
+#markup:
+#  goldmark:
+#    renderer:
+#      unsafe: true
+
+
+
 jobs:
   # Build job
   build:

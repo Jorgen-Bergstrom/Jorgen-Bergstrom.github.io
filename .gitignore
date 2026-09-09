@@ -1,0 +1,10 @@
+# Hugo build output — built by GitHub Actions on push, not committed
+public/
+
+# Synology NAS thumbnail folders (accidentally synced in)
+@eaDir/
+*/@eaDir/
+
+# Hugo local build cache
+resources/_gen/
+.hugo_build.lock

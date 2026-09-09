@@ -69,14 +69,14 @@ params:
       scale: true
       fullscreen: true
     share:
-      enable: true
+      enable: false
       Twitter: true
       Linkedin: false
       Pinterest: false
       Tumblr: false
   search:
     enable: true
-    type: "lunr" # type of search engine ["lunr", "algolia"]
+    type: "algolia" # type of search engine ["lunr", "algolia"]
     contentLength: 4000 # max index length of the chunked content
     placeholder: "" # placeholder of the search bar
     maxResultLength: 10 # max number of results length
