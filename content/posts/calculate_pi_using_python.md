@@ -1,6 +1,6 @@
 ---
 date: '2025-02-26T19:46:58-05:00'
-draft: true
+draft: false
 title: 'Calculate Pi Using Python'
 author: 'Jorgen Bergstrom'
 tags: ['pi', 'Python']
