@@ -1,9 +1,9 @@
 baseURL: https://jorgen-bergstrom.github.io/
 languageCode: en-us
 languageName: English
-title: "MegaMachineLearn"
+title: "Jorgen Bergstrom"
 theme: LoveIt
-copyright: MegaMachineLearn
+copyright: Jorgen Bergstrom
 
 enableRobotsTXT: true
 enableGitInfo: true
@@ -17,8 +17,8 @@ enableEmoji: true
 params:
   defaultTheme: "auto" # ["auto", "light", "dark"]
   dateFormat: "2006-01-02"
-  title: "MegaMachineLearn"
-  description: "Teach yourself Machine Learning (ML) by example."
+  title: "Polymer Mechanics and Machine Learning"
+  description: "Material Models, Parameter Calibration, Experimental Data, Machine Learning."
   images: ["ML_icon_small.png"]
   author:
     name: 'Jorgen Bergstrom'
@@ -27,7 +27,7 @@ params:
     mobileMode: "auto" # mobile header mode ["fixed", "normal", "auto"]
     title:
       logo: '/megaphone-JB_03.webp'
-      name: "MegaMachineLearn"
+      name: "Jorgen Bergstrom"
       pre: ""
       post: "" # you can add extra information after the name (HTML format is supported), such as icons
       typeit: false # whether to use typeit animation for title name
@@ -93,8 +93,9 @@ params:
       enable: true
       gravatarEmail: "" # Gravatar Email for preferred avatar in home page
       avatarURL: "ML_icon_small.png"
-      title: "MegaMachineLearn" # title shown in home page (HTML format is supported)
-      subtitle: "Teach yourself Machine Learning (ML) by example."
+      title: "Polymer Mechanics and Machine Learning" # title shown in home page (HTML format is supported)
+      subtitle: "Material Models, Parameter Calibration, Experimental Data, Machine Learning."
+
       typeit: true # whether to use typeit animation for subtitle
       social: true # whether to show social links
       disclaimer: "" # disclaimer (HTML format is supported)
