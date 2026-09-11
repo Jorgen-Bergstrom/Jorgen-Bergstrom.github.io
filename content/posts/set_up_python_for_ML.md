@@ -1,14 +1,10 @@
 ---
-date: '2025-02-25T20:18:40-05:00'
+date: '2024-03-17T00:00:00-05:00'
 draft: false
 title: 'Set Up Python For ML'
 author: 'Jorgen Bergstrom'
 tags: ['ML', 'Python']
 ---
-
-{{< admonition type=abstract >}}
-This article explains how to set up a Python environment for use with Machine Learning
-{{< /admonition >}}
 
 ## Background
 

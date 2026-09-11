@@ -9,19 +9,25 @@ enableRobotsTXT: true
 enableGitInfo: true
 enableEmoji: true
 
+# Allow raw HTML in markdown (needed for embedded video, etc.)
+markup:
+  goldmark:
+    renderer:
+      unsafe: true
+
 # pagination:
 #   disableAliases: false
 #   pagerSize: 10
 #   path: "page"
 
 params:
-  defaultTheme: "auto" # ["auto", "light", "dark"]
+  defaultTheme: "light" # ["auto", "light", "dark"]
   dateFormat: "2006-01-02"
   title: "Polymer Mechanics and Machine Learning"
-  description: "Material Models, Parameter Calibration, Experimental Data, Machine Learning."
-  images: ["ML_icon_small.png"]
+  description: "Material Models, Experimental Data, Machine Learning."
+  images: ["JB3.jpeg"]
   author:
-    name: 'Jorgen Bergstrom'
+    name: 'Jorgen Bergstrom, PhD'
   header:
     desktopMode: "fixed" # desktop header mode ["fixed", "normal", "auto"]
     mobileMode: "auto" # mobile header mode ["fixed", "normal", "auto"]
@@ -92,9 +98,9 @@ params:
     profile:
       enable: true
       gravatarEmail: "" # Gravatar Email for preferred avatar in home page
-      avatarURL: "ML_icon_small.png"
+      avatarURL: "JB3.jpeg"
       title: "Polymer Mechanics and Machine Learning" # title shown in home page (HTML format is supported)
-      subtitle: "Material Models, Parameter Calibration, Experimental Data, Machine Learning."
+      subtitle: "Material Models, Experimental Data, Machine Learning."
 
       typeit: true # whether to use typeit animation for subtitle
       social: true # whether to show social links

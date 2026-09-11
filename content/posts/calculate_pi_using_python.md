@@ -1,14 +1,10 @@
 ---
-date: '2025-02-26T19:46:58-05:00'
+date: '2024-04-27T00:00:00-05:00'
 draft: false
 title: 'Calculate Pi Using Python'
 author: 'Jorgen Bergstrom'
 tags: ['pi', 'Python']
 ---
-
-{{< admonition type=abstract >}}
-Learn how to calculate Pi using Python (and JupiterLab).
-{{< /admonition >}}
 
 ## Background
 

@@ -1,15 +1,11 @@
 ---
-date: '2025-02-26T14:38:59-05:00'
+date: '2024-03-30T00:00:00-05:00'
 draft: false
 title: 'Install JupyterLab'
 author: 'Jorgen Bergstrom'
 tags: ['JupyterLab', 'Python']
 categories: ['Python']
 ---
-
-{{< admonition type=abstract >}}
-The best way to develop and explore Python code is to use JupyterLab.
-{{< /admonition >}}
 
 ## Instructions
 
