@@ -34,3 +34,8 @@ If you close the browser tab and want to open it again, then you can simply go t
 
 If you need to at a later time, you can use the following command to update jupyterLab:
 `pip install --upgrade jupyterlab`.
+
+## Use VS Code to Run Jupyter Notebooks
+
+Another option that I think is even nicer is to run Jupyter notebooks inside VS Code.
+The interface is very nice and easy to use. This is what I do these days.

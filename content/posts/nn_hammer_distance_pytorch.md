@@ -11,6 +11,10 @@ categories: ['Hammer Throw']
 In this example I have used a “Sequential” neural network model to solve the regression problem of how far a hammer will fly given an initial velocity and angle. A sequential model is linear stack of layers, and allows you to create a Neural Network (NN) by simply adding layers sequentially. Both PyTorch and Keras are popular frameworks for building these NN models. Compared to Kears, the PyTorch approach is exposes more details which makes it more flexible and suitable for complex and dynamic models.  Here is a PyTorch implementation of the hammer throw distance calculation:
 
 <br>
+{{< admonition type=note title="Code Location" >}}
+You can find the code in this example [here](https://github.com/Jorgen-Bergstrom/Hammer_Throw_Analysis/blob/main/Hammer_PyTorch.ipynb).
+{{< /admonition >}}
+<br>
 
 ```python
 import matplotlib.pyplot as plt

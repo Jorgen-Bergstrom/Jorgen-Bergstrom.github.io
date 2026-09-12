@@ -65,3 +65,9 @@ plt.show()
 coefficients = pd.DataFrame(model.coef_, X.columns, columns=['Coefficient'])
 print(coefficients)
 ```
+
+<br>
+{{< admonition type=note title="Code Location" >}}
+You can find the code and results [here](https://github.com/Jorgen-Bergstrom/Hammer_Throw_Analysis/blob/main/ChatGPT.ipynb).
+{{< /admonition >}}
+<br>

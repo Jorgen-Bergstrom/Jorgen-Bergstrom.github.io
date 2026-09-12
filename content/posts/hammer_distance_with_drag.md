@@ -8,9 +8,16 @@ categories: ['Hammer Throw']
 ---
 
 ## Physics-Based Theory and Numerical Implementation
-The weight of the hammer ball is 7.26 kg, the material is steel and therefore the ball radius is given by $r = (3m/(4\pi \rho_s))^{1/3}$. The drag force from the air resistance is $F_d = \rho_a v^2 C_d A$, where $A$ is the cross-sectional area. In summary, Newton’s equation in the horizontal and vertical directions can be written in incremental form: $$ \displaystyle \Delta v_x = – \frac{F_d(v)}{m} \frac{v_x}{v} \Delta t$$ $$ \displaystyle \Delta v_y = – \left[ \frac{F_d(v)}{m} \frac{v_y}{v} + g \right] \Delta t$$
+The weight of the hammer ball is 7.26 kg, the material is steel and therefore the ball radius is given by $r = (3m/(4\pi \rho_s))^{1/3}$. The drag force from the air resistance is $F_d = \rho_a v^2 C_d A$, where $A$ is the cross-sectional area. In summary, Newton’s equation in the horizontal and vertical directions can be written in incremental form: 
+$$ \displaystyle \Delta v_x = – \frac{F_d(v)}{m} \frac{v_x}{v} \Delta t$$ $$ \displaystyle \Delta v_y = – \left[ \frac{F_d(v)}{m} \frac{v_y}{v} + g \right] \Delta t$$
 
 <br>
+{{< admonition type=note title="Code Location" >}}
+You can find the code in this example in this [file](https://github.com/Jorgen-Bergstrom/Hammer_Throw_Analysis/blob/main/Hammer_Throw_Newton_2.ipynb).
+{{< /admonition >}}
+<br>
+
+
 These equations can be solved numerically using the following Python code.
 
 ```python

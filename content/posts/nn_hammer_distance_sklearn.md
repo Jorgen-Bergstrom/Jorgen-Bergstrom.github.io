@@ -11,6 +11,11 @@ categories: ['Hammer Throw']
 The `MLPRegressor` in scikit-learn is a powerful tool for performing regression tasks using a multi-layer perceptron (MLP), which is a type of artificial neural network. It is a supervised learning algorithm that learns a function that maps input data to continuous output values. It can model complex relationships between features and the target variable.
 
 <br>
+{{< admonition type=note title="Code Location" >}}
+You can find the code in this example [here](https://github.com/Jorgen-Bergstrom/Hammer_Throw_Analysis/blob/main/Hammer_scikit_NeuralNet.ipynb).
+{{< /admonition >}}
+<br>
+
 
 ```python
 import matplotlib.pyplot as plt

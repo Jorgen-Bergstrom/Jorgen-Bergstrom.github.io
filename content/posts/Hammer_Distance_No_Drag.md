@@ -11,6 +11,12 @@ categories: ['Hammer Throw']
 
 Welcome to the first article in my series on calculating the distance a projectile will travel based on its initial velocity and angle. Using [hammer throwing](https://en.wikipedia.org/wiki/Hammer_throw), an Olympic track and field sport, as an example, I will demonstrate these calculations. However, the principles apply equally well to baseball and other sports.
 
+<br>
+{{< admonition type=note title="Code Location" >}}
+You can find the code in this example in this [file](https://github.com/Jorgen-Bergstrom/Hammer_Throw_Analysis/blob/main/Hammer_Throw_Newton_1.ipynb).
+{{< /admonition >}}
+<br>
+
 For simplicity, I will focus solely on predicting the distance the hammer will fly, leaving the complete flight path for later discussion. In this series, we will explore both Newtonian mechanics and various machine learning algorithms. Our goal is to determine the most effective method for making these predictions.
 
 ## Calculation when no Air Drag
@@ -24,13 +30,17 @@ import math
 v = 19.0                     # velocity [m/s]
 angle = math.radians(40.0)
 g = 9.81                     # gravity [m/s^2]
+
 v_vert = math.sin(angle) * v # vertical velocity
+
 # v = a * t, so t = v / a
 # v0 - g*t = 0  => t = v0 / g
 t = 2 * v_vert / g
 print(f"time = {t:.3f}")
+
 d = math.cos(angle) * v * t
 print(f"solution 1: distance={d:.3f} m")
+
 d = math.sin(2*angle) * v**2 / g
 print(f"solution 2: distance={d:.3f} m")
 ```
@@ -38,3 +48,12 @@ print(f"solution 2: distance={d:.3f} m")
 The max distance occurs when the angle is 45°.
 
 Note that GPT-4o also gives this equation when asked the question "How far does a projectile fly if its initial velocity is V and initial angle is alpha? Ignore the air drag."
+
+<br>
+There's the output that is generated when running the code:
+
+```python
+time = 2.490
+solution 1: distance=36.240 m
+solution 2: distance=36.240 m
+```

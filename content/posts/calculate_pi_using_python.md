@@ -7,7 +7,16 @@ tags: ['pi', 'Python']
 ---
 
 ## Background
-The purpose of this article is to demonstrate how [JupyterLab](/posts/install_jupyter/) can be used to solve numerical problems using Python. My example here is not a machine learning problem, but instead focuses on how one can calculate an approximate value of Pi. You may want to know why you want to do this since you can always just type:
+The purpose of this article is to demonstrate how [JupyterLab](/posts/install_jupyter/) can be used to solve numerical problems using Python. 
+
+<br>
+{{< admonition type=note title="Code Location" >}}
+You can find the code in this example in this [repo](https://github.com/Jorgen-Bergstrom/Calculate_Pi_using_Python/tree/main).
+{{< /admonition >}}
+
+<br>
+
+My example here is not a machine learning problem, but instead focuses on how one can calculate an approximate value of Pi. You may want to know why you want to do this since you can always just type:
 
 ```python
 >>> import math

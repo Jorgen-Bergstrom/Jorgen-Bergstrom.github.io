@@ -11,6 +11,13 @@ categories: ['Hammer Throw']
 Linear regression is a fundamental statistical method used in machine learning to model the relationship between a dependent variable (often called the target or outcome) and one or more independent variables (often called features or predictors). In our example of hammer throwing we have 2 inputs (velocity and angle), and one output (distance). The regression equation therefore becomes: $d = b_0 + b_1 v + b_2 \alpha$. The goal of linear regression is to find the values of the coefficients ($b_i$) that minimize the difference between the predicted values and the actual values. This difference is measured using a loss function, commonly the  mean squared error (MSE). In this case it is clear that the distance thrown is not a linear function of the input parameters, so it is unlikely that Linear Regression can accurately predict hammer throwing!
 
 <br>
+{{< admonition type=note title="Code Location" >}}
+You can find the code in these examples in this [file](https://github.com/Jorgen-Bergstrom/Hammer_Throw_Analysis/blob/main/Hammer_Regression1.ipynb).
+{{< /admonition >}}
+<br>
+
+
+<br>
 Just for fun, here is the Python code that performing the linear regression analysis using the Scikit-Learn library.
 
 ```python

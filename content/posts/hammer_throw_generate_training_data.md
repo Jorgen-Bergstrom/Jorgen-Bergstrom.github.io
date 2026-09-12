@@ -8,7 +8,7 @@ categories: ['Hammer Throw']
 ---
 
 ## Training Data
-All machine learning algorithms require data for training the model. In this example, we can use physics calculations to generate a dataset with two input variables: velocity and angle, and one output variable: flight distance. The following Python code creates an input file named ‘data_X.csv’ containing the input variables, and a results file with the flight distance. These files will be used in subsequent machine learning demonstrations.
+All machine learning algorithms require data for training the model. In this example, we can use physics calculations to generate a dataset with two input variables: velocity and angle, and one output variable: flight distance. The following Python code creates an input file named `data_X.csv` containing the input variables, and a results file with the flight distance. These files will be used in subsequent machine learning demonstrations.
 
 <br>
 
@@ -65,3 +65,12 @@ with open('data_Y.csv', mode='w', newline='') as file:
     writer = csv.writer(file)
     writer.writerow(Y)
 ```
+
+<br>
+{{< admonition type=note title="File Location" >}}
+Here are the generated [data files](https://github.com/Jorgen-Bergstrom/Hammer_Throw_Analysis).
+{{< /admonition >}}
+<br>
+
+
+

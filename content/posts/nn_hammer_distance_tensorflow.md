@@ -14,6 +14,13 @@ The Keras Sequential model is a simple and straightforward way to build neural n
 <img src="/hammer_net_2.webp">
 <br>
 
+<br>
+{{< admonition type=note title="Code Location" >}}
+You can find the code in this example [here](https://github.com/Jorgen-Bergstrom/Hammer_Throw_Analysis/blob/main/Hammer_Keras.ipynb).
+{{< /admonition >}}
+<br>
+
+
 The following Python code implements a Keras NN model that can predict hammer throw distance.
 
 <br>
