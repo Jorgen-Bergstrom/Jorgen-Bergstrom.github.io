@@ -9,8 +9,14 @@ categories: ['Neural Networks']
 
 ## [1 Input] + [1 Hidden Layer with 2 Perceptrons] + [1 Output]
 In this example I will create a simple neural network that has one input, one hidden layer with 2 perceptrons, and one output. I will then fit that neural network to the following mathematical function: $y = 0.1 + 0.1 \cdot x^2$ over the range $x \in [0,10]$.
-![](/Net_-I1_H2_O1.webp)
+
+<br>
+<img src="/Net_-I1_H2_O1.webp">
+<br>
+<br>
+
 C++ code to solve this problem is listed below:
+
 ```cpp
 // 2 Layers: 1 input, 2 hidden, 1 output
 #include <iostream>
@@ -20,6 +26,7 @@ C++ code to solve this problem is listed below:
 #include <vector>
 #include <cmath>
 #include <random>
+
 double
 activation(double x, int type)
 {
@@ -28,6 +35,7 @@ activation(double x, int type)
     if (type==3) return x; // linear
     return 0;
 }
+
 double
 activation_der(double x, int type)
 {
@@ -58,11 +66,13 @@ main(int argc, char *argv[])
     w22 = 1;
     b2 = 0;
     double eta {1.0e-4}; // learning rate
+
     std::cout << "Backpropagation" << std::endl;
     constexpr int max_epochs {10000};
     std::vector<double> err(max_epochs);
     double dw11_sum, dw12_sum, dw21_sum, dw22_sum, db11_sum, db12_sum, db2_sum;
     double err2_sum;
+
     for (int epoch=0; epoch < max_epochs; epoch++) {
         std::cout << "  epoch=" << epoch << std::endl;
         if (true) { // Vanilla Backpropagation: loop through all training data
@@ -99,6 +109,7 @@ main(int argc, char *argv[])
         }
         std::cout << "    err2 = " << err[epoch] << std::endl;
     }
+
     std::cout << "Final parameters" << std::endl;
     std::cout << "  w11 = " << w11 << std::endl;
     std::cout << "  b11 = " << b11 << std::endl;
@@ -111,6 +122,7 @@ main(int argc, char *argv[])
     std::cout << "Model Predictions" << std::endl;
     std::ofstream eFile("NN_err.txt");
     assert(eFile.is_open());
+
     for (int i=0; i < err.size(); i++) {
         eFile << err[i] << std::endl;
     }
@@ -127,16 +139,28 @@ main(int argc, char *argv[])
     std::cout << "done." << std::endl;
 }
 ```
+
+<br>
 The results from running this code is plotted in the following figure.
-![](/plot_predictions.webp)
+
+<br>
+<img src="/plot_predictions.webp">
+<br>
+
 As expected, having 2 perceptrons in the hidden layer allows the neural network more accurately predict the response compared to just having 1 perceptron (see this [example](https://megamachinelearn.org/backpropagation-part-1-single-perceptron/)).
----
+
+<br>
+<br>
+<br>
+
 This problem can also be solved using the Keras Python library. Note that the Python code runs significantly slower than the C++ code listed above.
+
 ```python
 import matplotlib.pyplot as plt
 import numpy as np
 import keras
 from keras import layers
+
 print("\n\n")
 print("generate training data")
 N = 100
@@ -145,18 +169,22 @@ target = np.empty(N)
 for i in range(N):
     x[i] = 10 * i / N
     target[i] = 0.1 * (1.0 + x[i]**2)
+
 print("create model")
 model = keras.Sequential()
 model.add(keras.Input(shape=(1,)))
 model.add(layers.Dense(2, activation='relu', kernel_initializer='he_normal'))
 model.add(layers.Dense(1, activation='relu', kernel_initializer='he_normal'))
 model.compile(optimizer='nadam', loss='mse', metrics=['mean_absolute_error'])
+
 print("fit model")
 model.fit(x, target, epochs=1000, verbose=1)
 model.summary()
+
 print("compare predictions to target")
 predictions = model.predict(x, verbose=0)
 model.summary()
+
 print("L1 weights: ", model.layers[0].get_weights())
 print("L2 weights: ", model.layers[1].get_weights())
 print("plot results")
@@ -166,3 +194,4 @@ plt.grid()
 plt.savefig('plot_predictions_keras.png')
 plt.show()
 ```
+

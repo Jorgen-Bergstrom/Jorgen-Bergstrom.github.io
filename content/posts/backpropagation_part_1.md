@@ -8,26 +8,39 @@ categories: ['Neural Networks']
 ---
 
 ## One Network Layer with 1 Input and 1 Output
-The simplest neural network architecture consists of a single perceptron. This network has only one input and one output, making it a highly streamlined model. While suitable for theoretical understanding, it is insufficient for real-world applications due to its limited capacity. However, it serves as a fundamental building block for studying the principles of backpropagation and training neural networks.
-![](/oneNN.webp)
+
+The simplest neural network architecture consists of a single perceptron. This network has only one input and one output, making it a highly streamlined model. While suitable for theoretical understanding, it is insufficient for real-world applications due to its limited capacity. However, it serves as a fundamental building block for studying the principles of 
+backpropagation and training neural networks.
+
+<br>
+<img src="/oneNN.webp">
+<br>
+
 ## What is a Perceptron?
 **A perceptron is a simplified model of a neuron that can learn to classify data by linearly separating the input data into different categories.** It is a fundamental building block of artificial neural networks and plays a role in machine learning algorithms like linear regression and classification.
+
 **Structure of a Perceptron:**
 - **Input layer:** Receives the raw data.
 - **Weighting layer:** Multiplies the input data by weight values.
 - **Bias term:** Adds a constant value to the weighted input.
 - **Activation function:** Determines whether the output is positive or negative.
 - **Output layer:** Produces the final classification or prediction.
+
 **How it works:**
 1. The input data is multiplied by the weight values.
 1. The bias term is added to the weighted input.
 1. The activation function is applied to the sum, which determines the output.
 1. The output is either positive or negative, indicating the classification or prediction.
+
 **Learning process:**
 - The perceptron learns by adjusting the weight values and bias term.
 - It compares the predicted output with the actual output.
 - Errors are corrected by adjusting the weights and biases in the direction that reduces the error.
+
+<br>
 The following pseudocode explains how we can analyze this simple neural network (NN):
+<br>
+
 ```text
 Input: x
 Output: y = f(w * x + b)
@@ -53,7 +66,12 @@ de/db = (d-y) * (-1) * f’(w*x+b)
 w_new = w_old + eta * (d-y) * f’(w*x+b) * x
 b_new = b_old + eta * (d-y) * f’(w*x+b)
 ```
+
+<br>
 The algorithm to find [w,b] therefore becomes:
+<br>
+
+
 ```text
 w = random number
 b = random number
@@ -65,8 +83,13 @@ for epoch in range(100):
     w = w + tmp2 * x
     b = b + tmp2
 ```
+
+
 ## Activation Functions
 There are many different activation functions that can be used. Here are some examples (in C++ code format). The perhaps two most commonly used activation functions are ReLU and sigmoid. The ReLU activation is often used for classification tasks with linearly separable  data, and sigmoid activatation is often used for logistic regression and binary classification.
+
+<br>
+
 ```cpp
 double
 Neural_Network_1N1::activation(double x, ActivationType type)
@@ -103,27 +126,37 @@ Neural_Network_1N1::activation_der(double x, ActivationType type)
     }
 }
 ```
-![](/plot_ReLU_activation.png)
-![](/plot_sigmoid_activation.png)
+
+<br>
+<img src="/plot_ReLU_activation.png">
+<img src="/plot_sigmoid_activation.png">
+<br>
+
 ## Complete Example
-In this example I will try to fit a single layer, single perceptron network model to a non-linear mathematical function: $y = 0.1 + 0.1 \cdot x^2$.  Here’s the C++ code.
+In this example I will try to fit a single layer, single perceptron network model to a non-linear mathematical function: $y = 0.1 + 0.1 \cdot x^2$.
+
+Here’s the C++ code.
+<br>
+
 ```cpp
-// Copyright: https://megamachinelearn.org/resources/
 #include <iostream>
 #include <fstream>
 #include <algorithm>
 #include <cassert>
 #include <vector>
 #include <cmath>
+
 double
 ReLU(double x) {
     return std::max(0.0, x);
 }
+
 double
 ReLU_der(double x) {
     if (x < 0) return 0;
     return 1;
 }
+
 int
 main(int argc, char *argv[])
 {
@@ -166,13 +199,16 @@ main(int argc, char *argv[])
         std::cout << "    b = " << b << std::endl;
         std::cout << "    err2 = " << err[epoch] << std::endl;
     }
+
     std::cout << "Model Predictions" << std::endl;
     std::ofstream eFile("NN_err.txt");
     assert(eFile.is_open());
+
     for (int i=0; i < err.size(); i++) eFile << err[i] << std::endl;
     eFile.close();
     std::ofstream oFile("NN_results.txt");
     assert(oFile.is_open());
+
     for (int i=0; i < N; i++) {
         double y = ReLU(w * x[i] + b);
         oFile << x[i] << "\t" << target[i] << "\t" << y << std::endl;
@@ -180,6 +216,12 @@ main(int argc, char *argv[])
     oFile.close();
 }
 ```
+
+<br>
+
 The results from running this code is plotted in the following 2 figures. The red line in the figure to the left is the target function. Since the ReLU function is bilinear, the predicted blue curve clearly cannot match the shape of the target function. The figure to the right shows that the error converges towards the minimum possible value. The rate of convergence, however, is not very good as it takes more than 1,000 function evaluations to reach the target value. Switching to a different optimizer (like the Adam method) would help. That will be covered in a later article.
-![](/Ex1_plot_predictions.png)
-![](/Ex1_plot_err.png)
+
+<br>
+<img src="/Ex1_plot_predictions.png">
+<img src="/Ex1_plot_err.png">
+<br>

@@ -8,7 +8,11 @@ categories: ['Hammer Throw']
 ---
 
 ## Physics-Based Theory and Numerical Implementation
-The weight of the hammer ball is 7.26 kg, the material is steel and therefore the ball radius is given by $r = (3m/(4\pi \rho_s))^{1/3}$. The drag force from the air resistance is $F_d = \rho_a v^2 C_d A$, where $A$ is the cross-sectional area. In summary, Newton’s equation in the horizontal and vertical directions can be written in incremental form: $$ \displaystyle \Delta v_x = – \frac{F_d(v)}{m} \frac{v_x}{v} \Delta t$$ $$ \displaystyle \Delta v_y = – \left[ \frac{F_d(v)}{m} \frac{v_y}{v} + g \right] \Delta t$$ These equations can be solved numerically using the following Python code and results.
+The weight of the hammer ball is 7.26 kg, the material is steel and therefore the ball radius is given by $r = (3m/(4\pi \rho_s))^{1/3}$. The drag force from the air resistance is $F_d = \rho_a v^2 C_d A$, where $A$ is the cross-sectional area. In summary, Newton’s equation in the horizontal and vertical directions can be written in incremental form: $$ \displaystyle \Delta v_x = – \frac{F_d(v)}{m} \frac{v_x}{v} \Delta t$$ $$ \displaystyle \Delta v_y = – \left[ \frac{F_d(v)}{m} \frac{v_y}{v} + g \right] \Delta t$$
+
+<br>
+These equations can be solved numerically using the following Python code.
+
 ```python
 import math
 import matplotlib.pyplot as plt
@@ -43,14 +47,26 @@ plt.plot(x,y)
 plt.axis('equal');
 plt.ylim(bottom=1);
 ```
-```text
+
+<br>
+The output from running that code is:
+
+```
 Ball diameter=0.12273231093802761
 distance thrown = 77.72
 ```
-![](/Hammer_Img03.png)
+
+<img src="/Hammer_Img03.png">
+
+
+
 This Python code implementation is very simple and is based on the forward Euler integration and therefore requires small time steps. It is easy to implement but perhaps not the most elegant solutions.
+
+
 ## ChatGPT-4 Solution
-I used the following prompt in ChatGPT-4: `"Can you write Python code that calculate how how far a ball will fly if its initial velocity is V and the initial angle is A. Use Newton's equation to perform the calculation and include the influence of air drag."` The following code was generated:
+I used the following prompt in ChatGPT-4: `"Can you write Python code that calculate how how far a ball will fly if its initial velocity is V and the initial angle is A. Use Newton's equation to perform the calculation and include the influence of air drag."` 
+
+The following code was generated:
 ```python
 import math
 import numpy as np
@@ -69,6 +85,7 @@ def equations_of_motion(t, y, params):
     dVy_dt = (Fd_y / m) - g
     
     return [Vx, Vy, dVx_dt, dVy_dt]
+
 def calculate_trajectory(V, A, D, m):
     g = 9.81  # Gravity in m/s^2
     rho = 1.225  # Air density in kg/m^3
@@ -97,6 +114,7 @@ def calculate_trajectory(V, A, D, m):
     else:
         range_distance = x[-1]  # If it never hits the ground in the interval, take the last position
     return range_distance
+
 # Example usage
 initial_velocity = 50  # in meters per second
 launch_angle = 45      # in degrees
@@ -105,25 +123,21 @@ mass = 0.145           # in kilograms (typical mass of a baseball)
 range_distance = calculate_trajectory(initial_velocity, launch_angle, diameter, mass)
 print(f"The ball will fly approximately {range_distance:.2f} meters.")
 ```
-```python
-solve_ivp()
-```
-```python
-A
-```
-```python
-A
-```
-```python
-ground_hits
-```
+
+I really like this code because it uses the `solve_ivp()` function from scipy.integrate. The problem here is that it does not work. It always returns a distance of 0, which is clearly not right. I reviewed the code and found 2 errors. On line 20, the variable `A` should be called something else since `A` is already a local variable. And on lines 43-44 the first row should be removed to make sure that the test for `ground_hits` works.
+
+
 ## GPT-4o Solution
-```python
-"Can you write Python code that calculate how how far a ball will fly if its initial velocity is V and the initial angle is A. Use Newton's equation to perform the calculation and include the influence of air drag."
-```
+
+I used the following prompt in GPT-4o: 
+```"Can you write Python code that calculate how how far a ball will fly if its initial velocity is V and the initial angle is A. Use Newton's equation to perform the calculation and include the influence of air drag."```
+
+The following code was generated (note that I changed some of the variable values to be similar to what I had selected):
+
 ```python
 import numpy as np
 import matplotlib.pyplot as plt
+
 # Constants
 g = 9.81  # Acceleration due to gravity (m/s^2)
 rho = 1.204  # Density of air (kg/m^3)
@@ -132,8 +146,10 @@ r = 0.061366  # Radius of the ball (m)
 A = np.pi * r**2  # Cross-sectional area (m^2)
 m = 7.26  # Mass of the ball (kg)
 # Function to compute the drag force
+
 def drag_force(v):
     return 0.5 * Cd * A * rho * v**2
+
 # Function to perform the projectile motion calculation with air drag
 def calculate_trajectory(V, angle, dt=0.01):
     # Initial conditions
@@ -166,6 +182,7 @@ def calculate_trajectory(V, angle, dt=0.01):
         y_points.append(y)
     
     return x_points, y_points
+
 # Initial conditions
 initial_velocity = 28.0  # Initial velocity in m/s
 initial_angle = 44.0  # Initial angle in degrees
@@ -179,17 +196,31 @@ plt.ylabel('Height (m)')
 plt.title('Projectile Motion with Air Drag')
 plt.grid(True)
 plt.show()
+
 # Print the range of the projectile
 print(f'The ball will fly approximately {x_points[-1]:.2f} meters.')
 ```
+
+
 Here are the results:
-![](/Hammer_Img04.png)
-```python
-The ball will fly approximately 77.61 meters.
-```
+
+```The ball will fly approximately 77.61 meters.```
+
+<img src="/Hammer_Img04.png">
+
 This solutions works and is very similar to the simple solution that I created above.
+
+
 ## One GPT-4o Calculation
 Finally, I tried the to ask the specific question:
+```I am throwing a ball with a diameter of 0.1227 m, a mass of 7.26 kg, with an initial velocity of 28 m/s, and an initial angle of 44 degrees. What distance will the ball fly before hitting the ground?```
+
 The returned answer was:
+```With a mass of 7.26 kg, a diameter of 0.1227 m, an initial velocity of 28 m/s, and an initial angle of 44 degrees, the ball will fly approximately 77.52 meters before hitting the ground.```
+
 This is correct. I’m impressed. By exploring the answer I can see that GPT used Python code to come up with this answer. Note, however, that if I repeat that question but don’t mention anything about the mass then GPT gives an answer of 30 m, which is incorrect and bad. If the mass is not specified then the problem cannot be solved, and I was not informed about that. That is certainly a important limitation of this LMM.
+
+<br>
+{{< admonition type=note >}}
 In summary: It is fun to solve this problem by using fundamental equations and then coding them up in Python. That works, but is time consuming. The GPT-4o solution is very similar and much quicker to perform!
+{{< /admonition >}}

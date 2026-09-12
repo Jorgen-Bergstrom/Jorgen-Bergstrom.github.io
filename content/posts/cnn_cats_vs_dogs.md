@@ -16,6 +16,7 @@ The network itself is a small convolutional neural network built with Keras. It 
 
 The model is compiled with the Adam optimizer and binary cross-entropy loss, since this is a two-class problem, and is then trained for 25 epochs. Finally, the trained model is applied to an image it has not seen before, and the prediction is reported as a percentage for each class.
 
+<br>
 
 ```python
 import numpy as np
@@ -23,6 +24,7 @@ import keras
 from keras import layers
 from tensorflow import data as tf_data
 import matplotlib.pyplot as plt
+
 """
 # Read in the images
 """
@@ -37,6 +39,7 @@ train_ds, val_ds = keras.utils.image_dataset_from_directory(
     image_size=image_size,
     batch_size=99,
 )
+
 """
 # Plot some images?
         xx = list(train_ds.take(2)) # create a list with the first 2 entries in train_ds
@@ -59,6 +62,7 @@ if (val == 'y'):
             plt.axis("off")
     plt.savefig("example_image.png")
     plt.show()
+
 """
 # Preprocess the images
 """
@@ -74,6 +78,7 @@ def preprocess(images, labels):
     return images, labels
 train_ds = train_ds.map(preprocess)
 val_ds   = val_ds.map(preprocess)
+
 """
 # Build the model
 """
@@ -103,6 +108,7 @@ def jb_make_simple_model(input_shape):
 print("\n> Build the model")
 model = jb_make_simple_model(input_shape=image_size + (3,))
 keras.utils.plot_model(model, show_shapes=True)
+
 """
 # Train the model
 """
@@ -117,6 +123,7 @@ model.compile(
 )
 model.fit(train_ds, epochs=25, callbacks=callbacks, validation_data=val_ds)
 model.save("cat_dog_model.keras")
+
 """
 # Apply the model
 """

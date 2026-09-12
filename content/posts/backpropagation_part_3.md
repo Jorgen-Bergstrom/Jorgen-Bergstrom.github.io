@@ -9,14 +9,21 @@ categories: ['Neural Networks']
 
 ## [1 Input] + [1 Hidden Layer with N Perceptrons] + [1 Output]
 In this example I will extend my previous [code](https://megamachinelearn.org/backpropagation-part-2-1-hidden-layer-2-perceptrons/) to be able to handle a hidden layer with *N* perceptrons. As before, I will demonstrate the use of the neural network by fitting it to the following mathematical function: $y = 0.1 + 0.1 \cdot x^2$ over the range $x \in [0, 10]$. The C++ implementation for this example can be found in my github [account](https://github.com/Jorgen-Bergstrom/MachineLearning_1i_Nh_1o). The code supports the following features: different activation functions, different initiation functions, and different optimization methods.
-![](/Net_1N1.webp)
+
+<br>
+<img src="/Net_1N1.webp">
+<br>
+
+
 The C++ code for the main function is listed here:
+
 ```cpp
 // 2 Layers: 1 input, N hidden, 1 output
 #include <iostream>
 #include <vector>
 #include <cassert>
 #include "Neural_Network_1N1.h"
+
 int
 main(int argc, char *argv[])
 {
@@ -27,6 +34,7 @@ main(int argc, char *argv[])
         x[f] = 10.0 * f / N;
         y[f] = 0.1 * (1.0 + x[f]*x[f]);
     }
+
     // normalize training data
     std::cout << "Normalize the training data" << std::endl;
     double minX, maxX, minY, maxY;
@@ -42,11 +50,13 @@ main(int argc, char *argv[])
         x[i] = (x[i] - minX) / (maxX - minX);
         y[i] = (y[i] - minY) / (maxY - minY);
     }
+
     //---------------------------------------------------
     std::cout << "Initialize the NN" << std::endl;
     Neural_Network_1N1 nn;
     int nrHidden {8};
     nn.init(nrHidden, 1, ActivationType::ReLU, ActivationType::linear); // number of perceptrons in hidden layer
+
     //---------------------------------------------------
     Neural_Network_Settings settings;
     int method {0};
@@ -56,6 +66,7 @@ main(int argc, char *argv[])
         std::cout << "What method do you want to use to fit the NN [1=vanilla, 2=non-linear optimization, 3=Adam]: ";
         std::cin >> method;
     }
+
     switch (method) {
         case 1: // mini-batch gradient descent with constant learning rate
             settings.method = 1;
@@ -90,6 +101,7 @@ main(int argc, char *argv[])
         default:
             assert(false);
     }
+
     //---------------------------------------------------
     std::cout << "Fit the neural network" << std::endl;
     nn.fit(x, y, settings);
@@ -103,5 +115,12 @@ main(int argc, char *argv[])
     std::cout << "done." << std::endl;
 }
 ```
+
+<br>
+
 The figure below compares the performance of different optimization methods when training our model. We can see that the Adam optimizer outperforms a constant learning rate. However, the nonlinear optimization method SBPLX converges even more rapidly. SBPLX is a derivative-free optimization algorithm that is based on the Nelder-Mead simplex method. It’s important to note that while SBPLX may require fewer iterations to converge, each iteration can be computationally expensive. For most machine learning tasks, the gradient descent method with the Adam optimizer is the recommended approach due to its balance of speed and efficiency.
-![](/NN_err_i1_h8_o1.webp)
+
+<br>
+<img src="/NN_err_i1_h8_o1.webp">
+<br>
+

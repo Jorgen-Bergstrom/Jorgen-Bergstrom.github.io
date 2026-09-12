@@ -9,10 +9,14 @@ categories: ['Hammer Throw']
 
 ## Training Data
 All machine learning algorithms require data for training the model. In this example, we can use physics calculations to generate a dataset with two input variables: velocity and angle, and one output variable: flight distance. The following Python code creates an input file named ‘data_X.csv’ containing the input variables, and a results file with the flight distance. These files will be used in subsequent machine learning demonstrations.
+
+<br>
+
 ```python
 import math
 import numpy as np
 import csv
+
 def calc_distance(angle, velocity):
     # fixed input parameters
     g = 9.81          # gravity [m/s^2]
@@ -40,16 +44,19 @@ def calc_distance(angle, velocity):
         x.append( x[-1] + vx * dt )
         y.append( y[-1] + vy * dt )
     return x[-1]
+
 N = 500 # number of data points to generate
 rng = np.random.RandomState(1234)
 X_ang = rng.uniform(0, 45, N)
 X_vel = rng.uniform(0, 50, N)
 X = np.zeros((N,2))
 Y = np.zeros(N)
+
 for i in range(N):
     X[i,0] = X_ang[i]
     X[i,1] = X_vel[i]
     Y[i] = calc_distance(X_ang[i], X_vel[i])
+
 # save to csv-files
 with open('data_X.csv', mode='w', newline='') as file:
     writer = csv.writer(file)

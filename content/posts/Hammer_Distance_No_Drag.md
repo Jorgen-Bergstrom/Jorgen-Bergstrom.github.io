@@ -9,7 +9,7 @@ categories: ['Hammer Throw']
 
 ## Introduction
 
-Welcome to the first article in my series on calculating the distance a projectile will travel based on its initial velocity and angle. Using hammer throwing, an Olympic track and field sport, as an example, I will demonstrate these calculations. However, the principles apply equally well to baseball and other sports.
+Welcome to the first article in my series on calculating the distance a projectile will travel based on its initial velocity and angle. Using [hammer throwing](https://en.wikipedia.org/wiki/Hammer_throw), an Olympic track and field sport, as an example, I will demonstrate these calculations. However, the principles apply equally well to baseball and other sports.
 
 For simplicity, I will focus solely on predicting the distance the hammer will fly, leaving the complete flight path for later discussion. In this series, we will explore both Newtonian mechanics and various machine learning algorithms. Our goal is to determine the most effective method for making these predictions.
 

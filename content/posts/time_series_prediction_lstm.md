@@ -7,8 +7,6 @@ tags: ['RNN', 'LSTM', 'Python']
 categories: ['RNN']
 ---
 
-{{< admonition type=abstract >}}
-In this example I will show how a Keras Sequential model can be used to create time series predictions.
-{{< /admonition >}}
-
 ## Summary
+
+In this example I will show how a Keras Sequential model can be used to create time series predictions.

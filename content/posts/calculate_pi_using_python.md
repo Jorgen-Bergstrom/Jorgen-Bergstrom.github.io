@@ -7,10 +7,9 @@ tags: ['pi', 'Python']
 ---
 
 ## Background
+The purpose of this article is to demonstrate how [JupyterLab](/posts/install_jupyter/) can be used to solve numerical problems using Python. My example here is not a machine learning problem, but instead focuses on how one can calculate an approximate value of Pi. You may want to know why you want to do this since you can always just type:
 
-The purpose of this article is to demonstrate how JupiterLab can be used to solve numerical problems using Python. My example here is not a machine learning problem, but instead focuses on how one can calculate an approximate value of Pi. You may want to know why you want to do this since you can always just type:
-
-```Python
+```python
 >>> import math
 >>> math.pi
 3.141592653589793
@@ -18,14 +17,14 @@ The purpose of this article is to demonstrate how JupiterLab can be used to solv
 
 But did you know that the value returned by `math.pi` is simply the same as the following ratio:
 
-```Python
+```python
 >>> math.pi.as_integer_ratio()
 (884279719003555, 281474976710656)
 ```
 
 Therefore:
 
-```Python
+```python
 >>> 884279719003555 / 281474976710656 == math.pi
 True
 ```
@@ -38,7 +37,7 @@ This is of course not right since pi is an irrational number. What is we want to
 
 One cool and perhaps surprising way to calculate pi is to generate random locations within a square. Then the ratio between the number of locations that happen to be within the inscribed circle to the total number of locations can be used to approximate the value of pi. If we select the circle to have a radius of 1, then the area of the circle will be pi, and the area of the square is 4. The following Python code shows how to calculate pi using this method:
 
-```Python
+```python
 import math
 import random
 import numpy as np
@@ -67,14 +66,14 @@ print(f"Real pi={math.pi}")
 ```
 
 The results from running this code is:
-```Python
+```python
 N=2000 => approximate pi=3.102
 Real pi=3.141592653589793
 ```
 
 This method works, but it is obviously very numerically inefficient.
 
-![](/calc_pi_1a.webp)
+<img src="/calc_pi_1a.webp" style="width:568px" alt="Scatter plot of random points used to estimate pi">
 
 
 {{< admonition type=note >}}
@@ -90,7 +89,7 @@ Another method that is based on the same approach is to generate points between 
 that is inscribed inside the circle. The reason this is slightly more efficient is that both regions have about
 the same area. Here’s the Python code:
 
-```Python
+```python
 N = 2000
 inside_circle = 0
 xvec = np.array([])
@@ -121,7 +120,7 @@ print(f"Real pi={math.pi}")
 
 The results from running this code is:
 ```
-N=2000 => approximate pi=3.102
+N=2000 => approximate pi=3.1329999999999996
 Real pi=3.141592653589793
 ```
 
@@ -141,7 +140,7 @@ $$ \pi = 4 \left( 1 - \frac{1}{3} + \frac{1}{5} - \frac{1}{7} + \cdots\right).$$
 
 This series can be implemented in Python as follows:
 
-```Python
+```python
 N = 1000
 sum = 0
 sign = 1
@@ -168,7 +167,7 @@ In other words, this works too, but is still very inefficient (slow).
 
 A much faster converging approximation of pi was proposed by [Srinivasa Ramanujan](https://en.wikipedia.org/wiki/Srinivasa_Ramanujan) in 1910.
 Here is one implementation:
-```Python
+```python
 N = 3
 sum = 0
 for k in range(N):
@@ -188,7 +187,7 @@ I recommend that you read the [wikipedia article](https://en.wikipedia.org/wiki/
 ## Method 5: Python Arbitrary Math
 
 If you just want to know pi to some given precision, then you can also use the mpmath library. Here’s one example:
-```Python
+```python
 from mpmath import *
 mp.dps = 80
 mp.pretty = True
@@ -209,7 +208,7 @@ This is an easy Python way to find an arbitrary digits of pi.
 
 I asked GPT-4o: “Can you write another python program that can calculate the 40 first digits of pi?”.
 And the answer I got was the following.
-```Python
+```python
 import decimal
 
 # Set the precision for the decimal module

@@ -25,7 +25,7 @@ params:
   dateFormat: "2006-01-02"
   title: "Polymer Mechanics and Machine Learning"
   description: "Material Models, Experimental Data, Machine Learning."
-  images: ["JB3.jpeg"]
+  images: ["JB5.jpeg"]
   author:
     name: 'Jorgen Bergstrom, PhD'
   header:
@@ -98,7 +98,7 @@ params:
     profile:
       enable: true
       gravatarEmail: "" # Gravatar Email for preferred avatar in home page
-      avatarURL: "JB3.jpeg"
+      avatarURL: "JB5.jpeg"
       title: "Polymer Mechanics and Machine Learning" # title shown in home page (HTML format is supported)
       subtitle: "Material Models, Experimental Data, Machine Learning."
 
