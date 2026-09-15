@@ -18,6 +18,8 @@ The model is compiled with the Adam optimizer and binary cross-entropy loss, sin
 
 <br>
 
+### Keras Implementation
+
 ```python
 import numpy as np
 import keras
@@ -136,3 +138,13 @@ predictions = model.predict(img_array)
 score = float(keras.ops.sigmoid(predictions[0][0]))
 print(f"This image is {100 * (1 - score):.2f}% cat and {100 * score:.2f}% dog.")
 ```
+
+### PyTorch Implementation
+
+<br>
+{{< admonition type=note title="PyTorch Code" >}}
+I wrote a more modern PyTorch implementation of the Cat-vs-Dog classifier. I recommend using this [code](https://github.com/Jorgen-Bergstrom/Image_Classification_Thermoplastics_or_Rubber/blob/main/cat_or_dog_classifier.ipynb) instead.
+{{< /admonition >}}
+<br>
+
+A PyTorch implementation with images is available in this [file](https://github.com/Jorgen-Bergstrom/Image_Classification_Thermoplastics_or_Rubber/blob/main/cat_or_dog_classifier.ipynb).

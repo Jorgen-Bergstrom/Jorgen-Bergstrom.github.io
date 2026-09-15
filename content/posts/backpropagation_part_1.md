@@ -16,6 +16,12 @@ backpropagation and training neural networks.
 <img src="/oneNN.webp">
 <br>
 
+<br>
+{{< admonition type=note title="Code Location" >}}
+You can find the source code for this example [here](https://github.com/Jorgen-Bergstrom/MachineLearning_1i_Nh_1o).
+{{< /admonition >}}
+<br>
+
 ## What is a Perceptron?
 **A perceptron is a simplified model of a neuron that can learn to classify data by linearly separating the input data into different categories.** It is a fundamental building block of artificial neural networks and plays a role in machine learning algorithms like linear regression and classification.
 
