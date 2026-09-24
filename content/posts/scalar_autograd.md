@@ -18,22 +18,17 @@ Consider a case when we have three x-parameters: $x_1$, $x_2$, $x_3$.
 In this example, these x-parameters have the following known values: $x_i = [2, 3, 4]$.
 
 Let's study a problem with these equations:
-$$
-\begin{aligned}
-f_1(x_i) &= x_1 + x_2 \\
-f_2(x_i) &= x_3 \cdot f_1(x_i) \\
-\mathcal{L}(x_i) &= \sin(f_2(x_i))
-\end{aligned}
-$$
+$$f_1(x_i) = x_1 + x_2$$
+$$f_2(x_i) = x_3 \cdot f_1(x_i)$$
+$$\mathcal{L}(x_i) = \sin(f_2(x_i))$$
+
 where $\mathcal{L}$ is the loss function.
 If we plug in the known values for $x_i$ then we get
-$$
-\begin{aligned}
-f_1 &= 5\\
-f_2 &= 20\\
-\mathcal{L} &= \sin(20) \approx 0.91294
-\end{aligned}
-$$
+
+$$f_1 = 5$$
+$$f_2 = 20$$
+$$\mathcal{L} = \sin(20) \approx 0.91294$$
+
 These calculation are obviously super quick and easy to perform,
 but what if we want to calculate the gradient of the loss function with respect to the variables $x_i$?
 The equations for the gradient terms [$\partial{\mathcal{L}}/\partial{x_1}$,
