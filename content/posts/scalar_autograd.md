@@ -8,7 +8,7 @@ tags: ['ML', 'Python']
 
 ## Introduction
 
-`scalar_autograd.py` is a complete reverse-mode automatic differentiation engine in about 80 lines [(heres the repo)](https://github.com/Jorgen-Bergstrom/Scalar_AutoGrad). It has a single class, `Value`, that wraps one scalar and remembers how that scalar was computed, so that calling `.backward()` fills in the derivative of the final value with respect to every value that fed into it.
+`engine.py` is a complete reverse-mode automatic differentiation engine in about 80 lines [(heres the repo)](https://github.com/Jorgen-Bergstrom/Scalar_AutoGrad). It has a single class, `Value`, that wraps one scalar and remembers how that scalar was computed, so that calling `.backward()` fills in the derivative of the final value with respect to every value that fed into it.
 
 It's the same core idea as PyTorch's autograd, just small enough to read in one sitting. The code is also strongly influenced by Karpathy's micrograd [repo](https://github.com/karpathy/micrograd).
 
@@ -141,7 +141,7 @@ def exp(self):
 The classic test, matching the original micrograd README:
 
 ```python
-from scalar_autograd import Value
+from engine import Value
 
 x1 = Value(2.0, (), 'x1')
 x2 = Value(3.0, (), 'x2')
