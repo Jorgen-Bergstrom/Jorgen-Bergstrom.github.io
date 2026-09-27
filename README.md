@@ -1,1 +1,1 @@
-Here is my web site [here](https://jorgen-bergstrom.github.io/) about polymer mechanics and machine learning.
+Here is my web site [here](https://bergstrom.org/) about polymer mechanics and machine learning.
