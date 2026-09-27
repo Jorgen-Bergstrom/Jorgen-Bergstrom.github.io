@@ -112,6 +112,12 @@ params:
   social:
     GitHub: "Jorgen-Bergstrom"
     Linkedin: "JorgenSBergstrom"
+    Bluesky:
+      Weight: 4
+      Url: "https://bsky.app/profile/jorgen9b.bsky.social"
+      Title: "Bluesky"
+      Icon:
+        Src: "lib/simple-icons/icons/bluesky.svg"
     Instagram: ""
     Youtubelegacy: ""
     Youtubecustom: ""
