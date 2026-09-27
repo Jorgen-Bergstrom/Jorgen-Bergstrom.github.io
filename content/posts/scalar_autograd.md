@@ -2,7 +2,9 @@
 date: '2026-09-24T00:00:00-05:00'
 draft: false
 title: 'A Tiny Autograd Engine, Explained'
+description: "Build a complete reverse-mode automatic differentiation engine in about 80 lines of Python — the same core idea as PyTorch's autograd, small enough to read in one sitting."
 author: 'Jorgen Bergstrom'
+bluesky: true
 tags: ['ML', 'Python']
 ---
 
