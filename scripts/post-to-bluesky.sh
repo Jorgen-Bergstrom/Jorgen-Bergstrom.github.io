@@ -109,6 +109,12 @@ fi
 : "${BLUESKY_HANDLE:?BLUESKY_HANDLE is not set}"
 : "${BLUESKY_APP_PASSWORD:?BLUESKY_APP_PASSWORD is not set}"
 
+# Be forgiving about common copy/paste slips: an accidental leading "@" on the
+# handle, or stray whitespace around either value.
+BLUESKY_HANDLE="${BLUESKY_HANDLE#@}"
+BLUESKY_HANDLE="$(printf '%s' "$BLUESKY_HANDLE" | tr -d '[:space:]')"
+BLUESKY_APP_PASSWORD="$(printf '%s' "$BLUESKY_APP_PASSWORD" | tr -d '[:space:]')"
+
 # --- log in and obtain a session token ---------------------------------------
 session="$(curl -sS -X POST \
   "https://bsky.social/xrpc/com.atproto.server.createSession" \
