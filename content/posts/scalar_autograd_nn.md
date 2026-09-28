@@ -5,6 +5,7 @@ title: 'A Tiny Neural Network, Explained'
 description: 'Build a small neural-network library (Neuron, Layer, MLP) on top of a scalar autograd engine, with backpropagation for free.'
 author: 'Jorgen Bergstrom'
 bluesky: true
+bluesky_image: /tiny_nn_cover.webp
 tags: ['ML', 'Neural Networks', 'Python']
 ---
 

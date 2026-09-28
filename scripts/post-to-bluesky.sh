@@ -42,10 +42,52 @@ get_fm() { # $1 = key -> value (quotes stripped)
 TITLE="$(get_fm title)"
 DESCRIPTION="$(get_fm description)"
 SLUG_OVERRIDE="$(get_fm slug)"
+BLUESKY_IMAGE="$(get_fm bluesky_image)"
 
 if [[ -z "$TITLE" ]]; then
   echo "error: no 'title' in front matter of $POST_FILE" >&2
   exit 1
+fi
+
+# --- resolve the optional link-card thumbnail --------------------------------
+# `bluesky_image` is a path to an image in static/, e.g. /my_cover.webp. It is
+# attached as the external link card's `thumb`. Omitting it keeps the old
+# image-less behavior.
+IMAGE_PATH=""
+IMAGE_MIME=""
+if [[ -n "$BLUESKY_IMAGE" ]]; then
+  if [[ -f "$BLUESKY_IMAGE" ]]; then
+    candidate="$BLUESKY_IMAGE"
+  elif [[ "$BLUESKY_IMAGE" == /* ]]; then
+    candidate="static${BLUESKY_IMAGE}"
+  else
+    candidate="static/${BLUESKY_IMAGE}"
+  fi
+
+  if [[ ! -f "$candidate" ]]; then
+    echo "error: bluesky_image not found: '$BLUESKY_IMAGE' (looked for '$candidate')" >&2
+    exit 1
+  fi
+  IMAGE_PATH="$candidate"
+
+  image_ext="$(printf '%s' "${IMAGE_PATH##*.}" | tr '[:upper:]' '[:lower:]')"
+  case "$image_ext" in
+    jpg|jpeg) IMAGE_MIME="image/jpeg" ;;
+    png)      IMAGE_MIME="image/png" ;;
+    webp)     IMAGE_MIME="image/webp" ;;
+    gif)      IMAGE_MIME="image/gif" ;;
+    *)
+      echo "error: unsupported bluesky_image type: .$image_ext" >&2
+      exit 1
+      ;;
+  esac
+
+  image_size="$(wc -c < "$IMAGE_PATH" | tr -d '[:space:]')"
+  MAX_IMAGE_BYTES=1000000
+  if (( image_size > MAX_IMAGE_BYTES )); then
+    echo "error: bluesky_image is ${image_size} bytes; Bluesky limits thumbnails to ${MAX_IMAGE_BYTES} bytes" >&2
+    exit 1
+  fi
 fi
 
 # --- derive the article URL --------------------------------------------------
@@ -100,6 +142,11 @@ echo "---"
 echo "link card URL:  $POST_URL"
 echo "link card title: $TITLE"
 echo "link card desc:  $DESCRIPTION"
+if [[ -n "$IMAGE_PATH" ]]; then
+  echo "link card thumb: $IMAGE_PATH ($IMAGE_MIME)"
+else
+  echo "link card thumb: (none)"
+fi
 
 if [[ "$DRY_RUN" == "1" ]]; then
   echo "(dry run — nothing was sent)"
@@ -130,6 +177,23 @@ if [[ -z "$access_jwt" || -z "$did" ]]; then
   exit 1
 fi
 
+# --- upload the optional thumbnail blob --------------------------------------
+thumb_json="null"
+if [[ -n "$IMAGE_PATH" ]]; then
+  upload_result="$(curl -sS -X POST \
+    "https://bsky.social/xrpc/com.atproto.repo.uploadBlob" \
+    -H "Authorization: Bearer $access_jwt" \
+    -H "Content-Type: $IMAGE_MIME" \
+    --data-binary "@$IMAGE_PATH")"
+
+  thumb_json="$(printf '%s' "$upload_result" | jq -c '.blob // empty')"
+  if [[ -z "$thumb_json" ]]; then
+    echo "error: Bluesky image upload failed:" >&2
+    printf '%s\n' "$upload_result" | jq . >&2 2>/dev/null || printf '%s\n' "$upload_result" >&2
+    exit 1
+  fi
+fi
+
 # --- create the post, with a link preview card -------------------------------
 payload="$(jq -n \
   --arg repo "$did" \
@@ -138,6 +202,7 @@ payload="$(jq -n \
   --arg uri "$POST_URL" \
   --arg title "$TITLE" \
   --arg description "$DESCRIPTION" \
+  --argjson thumb "$thumb_json" \
   '{
      repo: $repo,
      collection: "app.bsky.feed.post",
@@ -147,11 +212,10 @@ payload="$(jq -n \
        createdAt: $createdAt,
        embed: {
          "$type": "app.bsky.embed.external",
-         external: {
-           uri: $uri,
-           title: $title,
-           description: $description
-         }
+         external: (
+           { uri: $uri, title: $title, description: $description }
+           + (if $thumb == null then {} else { thumb: $thumb } end)
+         )
        }
      }
    }')"
