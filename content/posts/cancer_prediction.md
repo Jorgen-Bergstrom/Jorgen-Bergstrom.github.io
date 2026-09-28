@@ -2,7 +2,10 @@
 date: '2026-09-26T00:00:00-05:00'
 draft: false
 title: 'Predicting Cancer with a Tiny Autograd Engine'
+description: "A from-scratch breast-cancer classifier on the Breast Cancer Wisconsin dataset: 95.4% ± 1.9% across five folds, then the same model in PyTorch."
 author: 'Jorgen Bergstrom'
+bluesky: true
+bluesky_image: /cancer_autograd_cover.webp
 tags: ['ML', 'Neural Networks', 'Python', 'PyTorch']
 ---
 
