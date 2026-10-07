@@ -1,6 +1,6 @@
 ---
 date: '2026-10-07T00:00:00-04:00'
-draft: true
+draft: false
 title: 'Benchmarking Local LLMs on MMLU: What 14,042 Questions Taught Me'
 description: "I ran eight local GGUF models against the full MMLU test set — 14,042 questions across 57 subjects — on a single consumer GPU. Here is the harness, the method, and the results."
 author: 'Jorgen Bergstrom'
