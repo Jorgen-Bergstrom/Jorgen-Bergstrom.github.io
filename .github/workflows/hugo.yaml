@@ -82,30 +82,35 @@ jobs:
         id: deployment
         uses: actions/deploy-pages@v4
 
-  # Announce posts that newly opt in with `bluesky: true` in their front matter
+  # Announce posts that opt in with `bluesky: true` in their front matter.
+  #
+  # Which posts have been announced is tracked in scripts/bluesky-announced.txt
+  # (committed) rather than inferred from git history: a post is skipped only
+  # once its announcement has actually succeeded and been recorded. A run that
+  # fails therefore retries on the next push instead of being silently skipped
+  # forever — which is how the MMLU post was lost.
   notify:
     runs-on: ubuntu-latest
     needs: deploy
-    # Only announce on a real push, not on manual workflow dispatches
-    if: github.event_name == 'push'
+    # Announce on a real push; a manual run from the Actions tab also retries
+    if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
+    permissions:
+      contents: write
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-        with:
-          # Full history is needed to compare the pushed range
-          fetch-depth: 0
 
       - name: Announce new posts on Bluesky
         env:
           BLUESKY_HANDLE: ${{ secrets.BLUESKY_HANDLE }}
           BLUESKY_APP_PASSWORD: ${{ secrets.BLUESKY_APP_PASSWORD }}
           SITE_BASE_URL: https://bergstrom.org
-          BEFORE_SHA: ${{ github.event.before }}
-          AFTER_SHA: ${{ github.sha }}
         run: |
           set -euo pipefail
+          MARKER="scripts/bluesky-announced.txt"
+          touch "$MARKER"
 
-          # Print the target URL and title for a post, or "true"/"false" for its flag
+          # Print "true"/"false" for a post's `bluesky:` front-matter flag
           bluesky_flag() {
             awk 'BEGIN{n=0} /^---[[:space:]]*$/{n++; if(n==2) exit; next} n==1{print}' \
               | sed -n 's/^bluesky:[[:space:]]*//p' \
@@ -113,44 +118,39 @@ jobs:
               | tr '[:upper:]' '[:lower:]' | tr -d '[:space:]'
           }
 
-          # On the very first push of a branch `before` is all zeros; fall back
-          # to the parent commit so we only look at what actually changed.
-          if [[ "$BEFORE_SHA" =~ ^0+$ ]]; then
-            if git rev-parse --verify --quiet "${AFTER_SHA}^" >/dev/null; then
-              BEFORE_SHA="$(git rev-parse "${AFTER_SHA}^")"
-            else
-              echo "No previous commit to compare against; nothing to announce."
-              exit 0
-            fi
-          fi
-
-          echo "Comparing ${BEFORE_SHA}..${AFTER_SHA}"
-
-          changed="$(git diff --name-only --diff-filter=AM "$BEFORE_SHA" "$AFTER_SHA" -- 'content/posts/*.md')"
-          if [[ -z "$changed" ]]; then
-            echo "No post changes in this push."
-            exit 0
-          fi
-
           posted=0
-          while IFS= read -r file; do
-            [[ -z "$file" || ! -f "$file" ]] && continue
+          for file in content/posts/*.md; do
+            [[ -f "$file" ]] || continue
 
             # Only act on posts that opted in with `bluesky: true`
-            new_flag="$(bluesky_flag < "$file")"
-            [[ "$new_flag" == "true" ]] || continue
+            [[ "$(bluesky_flag < "$file")" == "true" ]] || continue
 
-            # Skip if it was already opted in before this push, so later edits
-            # to an already-announced post don't re-post it.
-            old_flag="$(git show "${BEFORE_SHA}:${file}" 2>/dev/null | bluesky_flag || true)"
-            if [[ "$old_flag" == "true" ]]; then
-              echo "Already announced previously, skipping: $file"
+            slug="$(basename "$file" .md | tr '[:upper:]' '[:lower:]')"
+            if grep -qxF "$slug" "$MARKER"; then
+              echo "Already announced, skipping: $slug"
               continue
             fi
 
-            echo "Announcing: $file"
+            echo "Announcing: $slug"
             ./scripts/post-to-bluesky.sh "$file"
+            # Record immediately, so a later failure can't cause a re-post
+            echo "$slug" >> "$MARKER"
             posted=$((posted + 1))
-          done <<< "$changed"
+          done
 
           echo "Announced ${posted} post(s)."
+
+      - name: Record announced posts
+        if: always()
+        run: |
+          set -euo pipefail
+          MARKER="scripts/bluesky-announced.txt"
+          if [[ -z "$(git status --porcelain -- "$MARKER")" ]]; then
+            echo "Nothing new to record."
+            exit 0
+          fi
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "$MARKER"
+          git commit -m "Record Bluesky announcements [skip ci]"
+          git push

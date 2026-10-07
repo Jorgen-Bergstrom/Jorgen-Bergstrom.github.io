@@ -162,12 +162,52 @@ BLUESKY_HANDLE="${BLUESKY_HANDLE#@}"
 BLUESKY_HANDLE="$(printf '%s' "$BLUESKY_HANDLE" | tr -d '[:space:]')"
 BLUESKY_APP_PASSWORD="$(printf '%s' "$BLUESKY_APP_PASSWORD" | tr -d '[:space:]')"
 
+# --------------------------------------------------------------------------
+# HTTP helper — retries transient failures and, when a response is not the
+# JSON we expect, prints the raw body instead of dying with an opaque
+# `jq: parse error`. (A single non-JSON response aborted the whole run and,
+# under the old logic, the post was then considered "already announced".)
+# --------------------------------------------------------------------------
+HTTP_ATTEMPTS="${HTTP_ATTEMPTS:-4}"
+BODY_FILE="$(mktemp)"
+trap 'rm -f "$BODY_FILE"' EXIT
+
+api_post() { # usage: api_post <url> <curl args...>
+  local url="$1"; shift
+  local attempt=1 code=""
+  while (( attempt <= HTTP_ATTEMPTS )); do
+    code="$(curl -sS --max-time 90 -o "$BODY_FILE" -w '%{http_code}' "$@" "$url" 2>/dev/null || true)"
+    if [[ "$code" == 2* ]]; then
+      return 0
+    fi
+    echo "warning: POST ${url##*/} -> HTTP ${code:-no-response} (attempt $attempt/$HTTP_ATTEMPTS)" >&2
+    if (( attempt < HTTP_ATTEMPTS )); then sleep $(( attempt * 3 )); fi
+    attempt=$(( attempt + 1 ))
+  done
+  echo "error: request failed after $HTTP_ATTEMPTS attempts: $url" >&2
+  echo "last response body:" >&2
+  cat "$BODY_FILE" >&2
+  echo >&2
+  return 1
+}
+
+require_json() { # reads stdin; fails loudly (printing the body) if it isn't JSON
+  local body
+  body="$(cat)"
+  if ! printf '%s' "$body" | jq -e . >/dev/null 2>&1; then
+    echo "error: expected a JSON response, got:" >&2
+    printf '%s\n' "$body" >&2
+    return 1
+  fi
+  printf '%s' "$body"
+}
+
 # --- log in and obtain a session token ---------------------------------------
-session="$(curl -sS -X POST \
-  "https://bsky.social/xrpc/com.atproto.server.createSession" \
+api_post "https://bsky.social/xrpc/com.atproto.server.createSession" \
   -H "Content-Type: application/json" \
   --data "$(jq -n --arg id "$BLUESKY_HANDLE" --arg pw "$BLUESKY_APP_PASSWORD" \
-    '{identifier:$id, password:$pw}')")"
+    '{identifier:$id, password:$pw}')"
+session="$(require_json < "$BODY_FILE")"
 
 access_jwt="$(printf '%s' "$session" | jq -r '.accessJwt // empty')"
 did="$(printf '%s' "$session" | jq -r '.did // empty')"
@@ -180,11 +220,11 @@ fi
 # --- upload the optional thumbnail blob --------------------------------------
 thumb_json="null"
 if [[ -n "$IMAGE_PATH" ]]; then
-  upload_result="$(curl -sS -X POST \
-    "https://bsky.social/xrpc/com.atproto.repo.uploadBlob" \
+  api_post "https://bsky.social/xrpc/com.atproto.repo.uploadBlob" \
     -H "Authorization: Bearer $access_jwt" \
     -H "Content-Type: $IMAGE_MIME" \
-    --data-binary "@$IMAGE_PATH")"
+    --data-binary "@$IMAGE_PATH"
+  upload_result="$(require_json < "$BODY_FILE")"
 
   thumb_json="$(printf '%s' "$upload_result" | jq -c '.blob // empty')"
   if [[ -z "$thumb_json" ]]; then
@@ -220,11 +260,11 @@ payload="$(jq -n \
      }
    }')"
 
-result="$(curl -sS -X POST \
-  "https://bsky.social/xrpc/com.atproto.repo.createRecord" \
+api_post "https://bsky.social/xrpc/com.atproto.repo.createRecord" \
   -H "Authorization: Bearer $access_jwt" \
   -H "Content-Type: application/json" \
-  --data "$payload")"
+  --data "$payload"
+result="$(require_json < "$BODY_FILE")"
 
 uri="$(printf '%s' "$result" | jq -r '.uri // empty')"
 if [[ -z "$uri" ]]; then

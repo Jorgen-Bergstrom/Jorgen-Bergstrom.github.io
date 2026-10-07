@@ -1,0 +1,7 @@
+# Posts that have already been announced on Bluesky, one slug per line.
+# Written automatically by the "notify" job in .github/workflows/hugo.yaml
+# after a successful post. A slug listed here is never announced again;
+# delete a line to allow re-announcement.
+cancer_prediction
+scalar_autograd
+scalar_autograd_nn
