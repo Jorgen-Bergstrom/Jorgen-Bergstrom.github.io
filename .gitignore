@@ -8,3 +8,6 @@ public/
 # Hugo local build cache
 resources/_gen/
 .hugo_build.lock
+
+# Local agent hand-off notes (not committed)
+AGENTS.md
