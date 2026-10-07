@@ -5,3 +5,4 @@
 cancer_prediction
 scalar_autograd
 scalar_autograd_nn
+mmlu_local_llms
