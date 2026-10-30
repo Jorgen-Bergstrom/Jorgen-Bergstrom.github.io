@@ -13,7 +13,7 @@ categories: ['Digital Image Correlation']
 When performing uniaxial tension experiments for material characterization it is useful to not only record the applied force and displacement as a function of time, but also apply a speckle pattern on the specimen and take photos at regular time intervals during the test. These images can then be post-processed to better understand the deformation and strain fields in the specimen during the test. This type of image analysis is called Digital Image Correlation (DIC). 
 In this project I coded a full 2D DIC software and in this article I will explain how the software works and how it can be used from a LLM coding agent and natural-language. 
 
-To demonstrate the approach I will use data from a test where I recorded 5,900 speckle images during a tensile test. Each image size is 1,181 × 253 px. In the field of view there is a small dog-bone specimen and, on the right, the out-of-focus testing machine. 
+To demonstrate the approach I will use data from a test where I recorded 5,000 speckle images during a tensile test. Each image size is 1,181 × 253 px. In the field of view there is a small dog-bone specimen and, on the right, the out-of-focus testing machine. 
 
 There are lots of interesting challenges in analyzing this data: Which data frames (images) should be used? How do I know if the calculated displacement field worked? How do I know if the calculated strain fields are real? How do I select the proper Region of Interest (ROI), and can that be done automatically?
 
@@ -110,7 +110,7 @@ The first prompt was:
 
 > I was thinking about running the command `.venv/bin/python -m dic T3_png /tmp/dic2`, but if you review the images in that source folder you will see that there are way many images to analyze. So, I would like to only study the first 100 images. Can you run that analysis for me? Then when it is done can you make sure that it was able to calculate the strain fields for each of those images. If the strain calculation did not work, then is there a way to change the command line arguments to make it work?
 
-The agent counted the images (5,900), added `--max-images 100`, and ran the defaults:
+The agent counted the images (5,000), added `--max-images 100`, and ran the defaults:
 
 ```bash
 python -m dic T3_png /tmp/dic2 --max-images 100
@@ -144,7 +144,8 @@ The automatic mask was also part of the problem. It had picked up the specimen *
 
 *The automatic ROI (top) includes the out-of-focus machine on the right. The specimen-only mask (bottom) is built from fine-scale speckle contrast and keeps just the dog-bone.*
 
-The fix had two parts. First, a specimen-only mask was generated from the first frame: a 7 × 7 local standard deviation, thresholded at 8 grey levels, cleaned with binary opening/closing, holes filled, largest connected component kept, and everything right of the specimen cut away. Second, the grid was refined to match the specimen:
+The AI agent automatically noticed all these issues, and automatically fixed in two steps:
+First, a specimen-only mask was generated from the first frame: a 7 × 7 local standard deviation, thresholded at 8 grey levels, cleaned with binary opening/closing, holes filled, largest connected component kept, and everything right of the specimen cut away. Second, the grid was refined to match the specimen:
 
 ```bash
 python -m dic T3_png /tmp/dic2_100 \
@@ -153,7 +154,7 @@ python -m dic T3_png /tmp/dic2_100 \
   --subset 21 --step 6 --strain-window 5
 ```
 
-The numbers are not arbitrary. A 21 px subset fits inside the 76 px strip, and a 6 px step gives enough rows for the 5 × 5 strain window; the resulting virtual strain gauge is 45 px. The agent checked a few alternatives before settling on this one: keeping the 41 px subset gave only 93 strain points per frame at an 8 px step, while a 3-point strain window raised coverage but also raised the strain noise floor.
+The numbers were carefully selected by the AI agent. A 21 px subset fits inside the 76 px strip, and a 6 px step gives enough rows for the 5 × 5 strain window; the resulting virtual strain gauge is 45 px. The agent checked a few alternatives before settling on this one: keeping the 41 px subset gave only 93 strain points per frame at an 8 px step, while a 3-point strain window raised coverage but also raised the strain noise floor.
 
 With the specimen mask, the verification changed completely:
 
@@ -192,10 +193,10 @@ The correlation took 317 s (0.32 s/frame); figure rendering — 2,000 per-frame 
 | Strain window | 5 × 5 points, VSG 45 px |
 | Displacement coverage | 99.75 – 100 % |
 | Strain points per frame | 678 – 681 |
-| Final mean `Eeng_xx` | **11.09 %** |
-| Final mean `Eeng_yy` | −3.42 % (ν ≈ 0.31) |
-| Final mean `Etr_xx` | 10.48 % |
-| Strain noise floor | 0.042 % |
+| Final mean `Eeng_xx` | **11.09%** |
+| Final mean `Eeng_yy` | −3.42% (ν ≈ 0.31) |
+| Final mean `Etr_xx` | 10.48% |
+| Strain noise floor | 0.042% |
 | ZNCC median (last frame) | 0.979 |
 | Max displacement | 75.7 px |
 
@@ -255,7 +256,7 @@ The run writes `summary_report.md` (settings, coverage, noise floor, accuracy st
 - **The solver was never the problem.** A validated DIC implementation returned `NaN` strains because the ROI and the strain window did not fit the specimen. Most of the work in a real analysis is setup and verification.
 - **Natural language is a good interface to that work.** "Run the first 1,000 and plot the x-strain versus frame" is a complete specification when the agent can run the CLI, read the data, and verify the output.
 - **Make the checks explicit.** "Make sure it calculated the strain fields for every image" turned a plausible-looking run into a caught failure. The same instruction is good practice for a human.
-- **The physics is still the final check.** A linear strain ramp to 11.09 %, a transverse contraction of −3.42 %, and a Poisson ratio near 0.31 are the kind of sanity checks no agent should skip — and no contour plot should replace.
+- **The physics is still the final check.** A linear strain ramp to 11.09%, a transverse contraction of −3.42%, and a Poisson ratio near 0.31 are the kind of sanity checks no agent should skip — and no contour plot should replace.
 
 The prompts in this post are the whole interface. The rest is a command-line program that writes down what it did.
 
