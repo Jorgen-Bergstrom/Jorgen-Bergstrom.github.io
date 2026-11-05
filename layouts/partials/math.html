@@ -3,8 +3,11 @@
   MathJax = {
     tex: {
       displayMath: [['\\[', '\\]'], ['$$', '$$']],  // block
-      inlineMath: [['\\(', '\\)']]                  // inline
-    }
+      inlineMath: [['\\(', '\\)']],                 // inline
+      packages: {'[+]': ['ams']},
+      processEscapes: true
+    },
+    loader: {load: ['[tex]/ams']}
   };
 </script>
 
