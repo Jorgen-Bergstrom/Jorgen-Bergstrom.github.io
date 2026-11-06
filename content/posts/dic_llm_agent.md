@@ -4,8 +4,8 @@ draft: false
 title: '2D Digital Image Correlation, Driven by Natural Language'
 author: 'Jorgen Bergstrom'
 description: "An LLM coding agent runs a 1,000-frame 2-D DIC study, catches a silent strain failure, and produces the figures — from plain-English prompts."
-tags: ['DIC', 'Polymer Mechanics', 'LLM', 'Agents', 'Python']
-categories: ['Digital Image Correlation']
+tags: ['DIC', 'LLM', 'Python']
+categories: ['Polymer Mechanics']
 ---
 
 ## Introduction
@@ -140,7 +140,7 @@ The cause was geometry, not the solver. With the default subset of 41 px and a g
 
 The automatic mask was also part of the problem. It had picked up the specimen *and* the out-of-focus grip and frame on the right — regions with strong edges and blurred texture that look like valid DIC targets to a variance detector but are useless for measuring the specimen.
 
-<img src="/t032_roi_comparison.png" alt="Automatic versus specimen-only ROI">
+<img src="/t032_roi_comparison.webp" alt="Automatic versus specimen-only ROI">
 
 *The automatic ROI (top) includes the out-of-focus machine on the right. The specimen-only mask (bottom) is built from fine-scale speckle contrast and keeps just the dog-bone.*
 
@@ -206,7 +206,7 @@ The third prompt was:
 
 > Can you create a figure showing the engineering strain (x-dir) as a function of frame number?
 
-<img src="/t032_engineering_strain_vs_frame.png" alt="Engineering strain in x versus frame number">
+<img src="/t032_engineering_strain_vs_frame.webp" alt="Engineering strain in x versus frame number">
 
 *Field-mean engineering strain `Eeng_xx` for all 1,000 frames. The shaded band is ±1 standard deviation across the field — it reflects the real spatial spread between the grips and the gauge, not measurement noise. The measured strain noise floor is 0.042 %, roughly 265× below the final value.*
 
@@ -214,7 +214,7 @@ The result is a remarkably straight line: about 0.011 % strain per frame, reachi
 
 The corresponding strain field at the last frame shows how the measure behaves at finite deformation:
 
-<img src="/t032_strain_field_frame1000.png" alt="Nominal and true strain at frame 1000">
+<img src="/t032_strain_field_frame1000.webp" alt="Nominal and true strain at frame 1000">
 
 *Nominal strain `V − I` on top, true (logarithmic) strain `ln V` below, at frame 1,000. The axial strain reaches about 14.6% locally; the transverse strain is negative (contraction) and the shear is small. The field follows the deformed specimen.*
 

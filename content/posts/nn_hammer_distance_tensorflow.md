@@ -3,8 +3,8 @@ date: '2024-05-28T00:00:00-05:00'
 draft: false
 title: 'Neural Network Analysis of Hammer Throw Distance using TensorFlow Keras'
 author: 'Jorgen Bergstrom'
-tags: ['Hammer Throw', 'Neural Networks', 'TensorFlow', 'Keras', 'Python']
-categories: ['Hammer Throw']
+tags: ['Hammer Throw', 'TensorFlow', 'Keras', 'Python']
+categories: ['Worked Examples']
 ---
 
 ## Summary

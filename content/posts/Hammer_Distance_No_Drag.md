@@ -4,7 +4,7 @@ draft: False
 title: 'Hammer Throw Distance Calculation when No Air Drag'
 author: 'Jorgen Bergstrom'
 tags: ['Hammer Throw', 'Python']
-categories: ['Hammer Throw']
+categories: ['Worked Examples']
 ---
 
 ## Introduction

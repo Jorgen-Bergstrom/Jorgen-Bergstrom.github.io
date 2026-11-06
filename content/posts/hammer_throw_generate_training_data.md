@@ -3,8 +3,8 @@ date: '2024-05-26T00:00:00-05:00'
 draft: false
 title: 'Hammer Throw: Generate Training Data'
 author: 'Jorgen Bergstrom'
-tags: ['Hammer Throw', 'Data', 'Python']
-categories: ['Hammer Throw']
+tags: ['Hammer Throw', 'Python']
+categories: ['Worked Examples']
 ---
 
 ## Training Data

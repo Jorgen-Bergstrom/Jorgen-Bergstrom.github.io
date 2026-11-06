@@ -3,8 +3,8 @@ date: '2024-05-29T00:00:00-05:00'
 draft: false
 title: 'Neural Network Analysis of Hammer Throw Distance using PyTorch'
 author: 'Jorgen Bergstrom'
-tags: ['Hammer Throw', 'Neural Networks', 'PyTorch', 'Python']
-categories: ['Hammer Throw']
+tags: ['Hammer Throw', 'PyTorch', 'Python']
+categories: ['Worked Examples']
 ---
 
 ## Summary

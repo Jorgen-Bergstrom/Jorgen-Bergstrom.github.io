@@ -4,7 +4,7 @@ draft: false
 title: 'Physics Calculation of Hammer Throw Distance with Air Drag'
 author: 'Jorgen Bergstrom'
 tags: ['Hammer Throw', 'Physics', 'Python']
-categories: ['Hammer Throw']
+categories: ['Worked Examples']
 ---
 
 ## Physics-Based Theory and Numerical Implementation

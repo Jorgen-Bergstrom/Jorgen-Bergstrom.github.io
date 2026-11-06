@@ -3,8 +3,8 @@ date: '2024-06-01T00:00:00-05:00'
 draft: false
 title: 'Can ChatGPT Predict Hammer Throw Distance?'
 author: 'Jorgen Bergstrom'
-tags: ['Hammer Throw', 'LLM', 'ChatGPT', 'Python']
-categories: ['Hammer Throw']
+tags: ['Hammer Throw', 'LLM', 'Python']
+categories: ['Worked Examples']
 ---
 
 ## Introduction

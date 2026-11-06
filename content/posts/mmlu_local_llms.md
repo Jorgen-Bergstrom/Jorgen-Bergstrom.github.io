@@ -6,7 +6,7 @@ description: "I ran eight local GGUF models against the full MMLU test set — 1
 author: 'Jorgen Bergstrom'
 bluesky: true
 bluesky_image: /mmlu_local_llms_cover.webp
-tags: ['ML', 'LLM', 'llama.cpp', 'Benchmarking']
+tags: ['LLM', 'llama.cpp', 'Benchmarking']
 categories: ['Local LLM']
 ---
 

@@ -3,8 +3,8 @@ date: '2026-09-14T00:00:00-05:00'
 draft: false
 title: 'Rubber or Thermoplastic: a Stress-Strain Image Classifier'
 author: 'Jorgen Bergstrom'
-tags: ['CNN', 'Image Classification', 'Python', 'Polymer Mechanics']
-categories: ['CNN']
+tags: ['CNN', 'Image Classification', 'Python']
+categories: ['Polymer Mechanics']
 ---
 
 ## Introduction

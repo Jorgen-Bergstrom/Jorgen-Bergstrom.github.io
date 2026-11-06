@@ -5,8 +5,8 @@ title: 'Synethetic DIC Data Generator'
 description: "A real tensile test cannot tell you whether your DIC code is right — there is no ground truth to compare against. This post discusses a synthetic 2D DIC validation dataset generator app."
 author: 'Jorgen Bergstrom'
 bluesky: false
-tags: ['DIC', 'Polymer Mechanics', 'Python', 'Validation']
-categories: ['Digital Image Correlation']
+tags: ['DIC', 'Python', 'Validation']
+categories: ['Polymer Mechanics']
 ---
 
 ## Introduction

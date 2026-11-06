@@ -3,7 +3,7 @@ date: '2024-10-19T00:00:00-05:00'
 draft: false
 title: 'Install llama.cpp and Gemma from Huggingface'
 author: 'Jorgen Bergstrom'
-tags: ['LLM', 'Local LLM', 'Python']
+tags: ['LLM', 'llama.cpp', 'Python']
 categories: ['Local LLM']
 ---
 

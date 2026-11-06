@@ -6,7 +6,7 @@ description: "A from-scratch breast-cancer classifier on the Breast Cancer Wisco
 author: 'Jorgen Bergstrom'
 bluesky: true
 bluesky_image: /cancer_autograd_cover.webp
-tags: ['ML', 'Neural Networks', 'Python', 'PyTorch']
+tags: ['Autograd', 'PyTorch', 'Python']
 categories: ['Neural Networks']
 ---
 

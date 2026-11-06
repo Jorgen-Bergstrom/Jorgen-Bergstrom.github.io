@@ -3,8 +3,8 @@ date: '2025-02-27T20:18:36-05:00'
 draft: false
 title: 'Machine Learning Terminology'
 author: 'Jorgen Bergstrom'
-tags: ['terminology']
-categories: ['Machine Learning']
+tags: ['Terminology']
+categories: ['Neural Networks']
 ---
 
 ![](/space_30.png)

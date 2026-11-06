@@ -4,7 +4,7 @@ draft: false
 title: 'CNN Cats vs Dogs Classification'
 author: 'Jorgen Bergstrom'
 tags: ['CNN', 'Image Classification', 'Python']
-categories: ['CNN']
+categories: ['Worked Examples']
 ---
 
 ## Introduction

@@ -6,7 +6,7 @@ description: 'Build a small neural-network library (Neuron, Layer, MLP) on top o
 author: 'Jorgen Bergstrom'
 bluesky: true
 bluesky_image: /tiny_nn_cover.webp
-tags: ['ML', 'Neural Networks', 'Python']
+tags: ['Autograd', 'Python']
 categories: ['Neural Networks']
 ---
 

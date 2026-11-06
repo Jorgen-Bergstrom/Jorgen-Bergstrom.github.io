@@ -4,7 +4,7 @@ draft: false
 title: 'Scikit-Learn Regression of Hammer Throw Distance'
 author: 'Jorgen Bergstrom'
 tags: ['Hammer Throw', 'Scikit-Learn', 'Python']
-categories: ['Hammer Throw']
+categories: ['Worked Examples']
 ---
 
 ## Linear Regression

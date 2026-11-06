@@ -3,8 +3,8 @@ date: '2024-04-27T00:00:00-05:00'
 draft: false
 title: 'Calculate Pi Using Python'
 author: 'Jorgen Bergstrom'
-tags: ['pi', 'Python']
-categories: ['Python']
+tags: ['Pi', 'JupyterLab', 'Python']
+categories: ['Python Setup']
 ---
 
 ## Background

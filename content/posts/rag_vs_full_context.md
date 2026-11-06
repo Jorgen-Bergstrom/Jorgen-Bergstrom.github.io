@@ -5,7 +5,7 @@ title: 'Giving a Local LLM Your Own PDFs: Context Stuffing vs RAG'
 description: "I asked a local Qwen model the same four questions about a 91-page engineering PDF three ways — no context, the whole PDF, and RAG. The failures were the useful part."
 author: 'Jorgen Bergstrom'
 bluesky: false
-tags: ['ML', 'LLM', 'RAG', 'llama.cpp', 'Python']
+tags: ['LLM', 'RAG', 'llama.cpp', 'Python']
 categories: ['Local LLM']
 ---
 

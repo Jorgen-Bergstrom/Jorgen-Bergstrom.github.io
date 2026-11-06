@@ -3,7 +3,7 @@ date: '2024-11-16T00:00:00-05:00'
 draft: false
 title: 'Backpropagation Part 3: 1 Hidden Layer, N Perceptrons'
 author: 'Jorgen Bergstrom'
-tags: ['Backpropagation', 'Neural Networks', 'Python']
+tags: ['Backpropagation', 'Python']
 categories: ['Neural Networks']
 ---
 

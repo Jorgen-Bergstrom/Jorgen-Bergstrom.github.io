@@ -3,7 +3,7 @@ date: '2024-10-20T00:00:00-05:00'
 draft: false
 title: 'Backpropagation Part 1: Single Perceptron'
 author: 'Jorgen Bergstrom'
-tags: ['Backpropagation', 'Neural Networks', 'Python']
+tags: ['Backpropagation', 'Python']
 categories: ['Neural Networks']
 ---
 

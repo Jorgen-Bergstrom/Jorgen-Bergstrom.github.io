@@ -3,8 +3,8 @@ date: '2024-03-17T00:00:00-05:00'
 draft: false
 title: 'Set Up Python For ML'
 author: 'Jorgen Bergstrom'
-tags: ['ML', 'Python']
-categories: ['Python']
+tags: ['Python']
+categories: ['Python Setup']
 ---
 
 ## Background

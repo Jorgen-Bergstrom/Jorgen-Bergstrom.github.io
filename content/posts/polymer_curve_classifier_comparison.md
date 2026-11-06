@@ -4,7 +4,7 @@ draft: false
 title: 'The 98% Was an Illusion: Five Ways to Classify a Polymer Curve'
 description: "My earlier CNN looked 98% accurate because the same material appeared in both training and test. Under material-grouped cross-validation on a cleaned 599-curve dataset, five very different models all land near 93–95%."
 author: 'Jorgen Bergstrom'
-tags: ['ML', 'CNN', 'Gradient Boosting', 'Autoencoders', 'Polymer Mechanics', 'Python']
+tags: ['CNN', 'Gradient Boosting', 'Autoencoders', 'Python']
 categories: ['Polymer Mechanics']
 ---
 

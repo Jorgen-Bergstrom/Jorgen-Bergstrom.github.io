@@ -4,7 +4,7 @@ draft: false
 title: 'Install JupyterLab'
 author: 'Jorgen Bergstrom'
 tags: ['JupyterLab', 'Python']
-categories: ['Python']
+categories: ['Python Setup']
 ---
 
 ## Instructions

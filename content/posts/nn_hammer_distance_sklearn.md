@@ -3,8 +3,8 @@ date: '2024-05-28T00:00:00-05:00'
 draft: false
 title: 'Neural Network Analysis of Hammer Throw Distance using Scikit-Learn'
 author: 'Jorgen Bergstrom'
-tags: ['Hammer Throw', 'Neural Networks', 'Scikit-Learn', 'Python']
-categories: ['Hammer Throw']
+tags: ['Hammer Throw', 'Scikit-Learn', 'Python']
+categories: ['Worked Examples']
 ---
 
 ## Summary
