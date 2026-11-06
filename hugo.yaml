@@ -21,6 +21,15 @@ markup:
 #   path: "page"
 
 params:
+  app:
+    # Home-screen / launcher label (theme default was "My cool site").
+    title: "Jorgen Bergstrom"
+    themeColor: "#ffffff"
+    # Windows tile colour (theme default was an unrelated orange).
+    tileColor: "#0160ea"
+    # The theme emits a Safari pinned-tab <link> when this is set, but no
+    # safari-pinned-tab.svg exists; leaving it empty suppresses the dead link.
+    iconColor: ""
   defaultTheme: "light" # ["auto", "light", "dark"]
   dateFormat: "2006-01-02"
   title: "Polymer Mechanics and Machine Learning"
@@ -98,7 +107,7 @@ params:
     profile:
       enable: true
       gravatarEmail: "" # Gravatar Email for preferred avatar in home page
-      avatarURL: "JB5.jpeg"
+      avatarURL: "/JB5.jpeg"
       title: "Polymer Mechanics and Machine Learning" # title shown in home page (HTML format is supported)
       subtitle: "Material Models, Experimental Data, Machine Learning."
 
