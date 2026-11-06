@@ -1,6 +1,6 @@
 ---
 date: '2026-11-05T00:00:00-05:00'
-draft: false
+draft: true
 title: 'Giving a Local LLM Your Own PDFs: Context Stuffing vs RAG'
 description: "I asked a local Qwen model the same four questions about a 91-page engineering PDF three ways — no context, the whole PDF, and RAG. The failures were the useful part."
 author: 'Jorgen Bergstrom'
