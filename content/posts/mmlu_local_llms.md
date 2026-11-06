@@ -7,6 +7,7 @@ author: 'Jorgen Bergstrom'
 bluesky: true
 bluesky_image: /mmlu_local_llms_cover.webp
 tags: ['ML', 'LLM', 'llama.cpp', 'Benchmarking']
+categories: ['Local LLM']
 ---
 
 ## Introduction

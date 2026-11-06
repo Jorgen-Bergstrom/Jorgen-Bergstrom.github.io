@@ -6,6 +6,7 @@ description: "Build a complete reverse-mode automatic differentiation engine in 
 author: 'Jorgen Bergstrom'
 bluesky: true
 tags: ['ML', 'Python']
+categories: ['Neural Networks']
 ---
 
 ## Introduction

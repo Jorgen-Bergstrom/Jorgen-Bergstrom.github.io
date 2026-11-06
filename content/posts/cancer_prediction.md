@@ -7,6 +7,7 @@ author: 'Jorgen Bergstrom'
 bluesky: true
 bluesky_image: /cancer_autograd_cover.webp
 tags: ['ML', 'Neural Networks', 'Python', 'PyTorch']
+categories: ['Neural Networks']
 ---
 
 ## Introduction

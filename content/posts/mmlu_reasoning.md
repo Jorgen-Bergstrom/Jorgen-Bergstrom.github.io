@@ -5,6 +5,7 @@ title: 'Does Reasoning Help? A Paired MMLU Study on a Local 27B Model'
 description: "I turned reasoning on for one local 27B model and re-ran a paired 1,000-question MMLU sample against its Part 1 baseline: +8.7 points, at roughly 14x the wall-clock time."
 author: 'Jorgen Bergstrom'
 tags: ['ML', 'LLM', 'llama.cpp', 'Benchmarking', 'Reasoning']
+categories: ['Local LLM']
 ---
 
 In [Part 1](/posts/mmlu_local_llms/) I benchmarked eight

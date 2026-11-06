@@ -4,6 +4,7 @@ draft: false
 title: 'Set Up Python For ML'
 author: 'Jorgen Bergstrom'
 tags: ['ML', 'Python']
+categories: ['Python']
 ---
 
 ## Background

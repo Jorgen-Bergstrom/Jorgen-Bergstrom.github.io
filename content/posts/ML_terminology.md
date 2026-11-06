@@ -4,6 +4,7 @@ draft: false
 title: 'Machine Learning Terminology'
 author: 'Jorgen Bergstrom'
 tags: ['terminology']
+categories: ['Machine Learning']
 ---
 
 ![](/space_30.png)

@@ -4,6 +4,7 @@ draft: false
 title: 'Calculate Pi Using Python'
 author: 'Jorgen Bergstrom'
 tags: ['pi', 'Python']
+categories: ['Python']
 ---
 
 ## Background

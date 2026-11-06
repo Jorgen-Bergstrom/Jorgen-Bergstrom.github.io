@@ -7,6 +7,7 @@ author: 'Jorgen Bergstrom'
 bluesky: true
 bluesky_image: /tiny_nn_cover.webp
 tags: ['ML', 'Neural Networks', 'Python']
+categories: ['Neural Networks']
 ---
 
 ## Introduction
