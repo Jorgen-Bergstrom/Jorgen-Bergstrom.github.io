@@ -15,6 +15,11 @@ markup:
     renderer:
       unsafe: true
 
+# Home page also emits /index.json, which the lunr search on the site fetches.
+# Without the JSON output the search box renders but returns nothing.
+outputs:
+  home: ["HTML", "RSS", "JSON"]
+
 # pagination:
 #   disableAliases: false
 #   pagerSize: 10
@@ -57,7 +62,7 @@ params:
   page:
     math:
       enable: true
-      copyTex: true0
+      copyTex: true
       mhchem: true
     hiddenFromHomePage: false
     hiddenFromSearch: false
@@ -91,23 +96,30 @@ params:
       Tumblr: false
   search:
     enable: true
-    type: "algolia" # type of search engine ["lunr", "algolia"]
+    type: "lunr" # client-side search over /index.json; no credentials needed
     contentLength: 4000 # max index length of the chunked content
     placeholder: "" # placeholder of the search bar
     maxResultLength: 10 # max number of results length
     snippetLength: 30 # snippet length of the result
     highlightTag: "em" # HTML tag name of the highlight part in results
     absoluteURL: false # whether to use the absolute URL based on the baseURL in search index
-    algolia:
-      index: ""
-      appID: ""
-      searchKey: ""
+  # Number of articles on /posts/ before splitting into page/2, page/3, ...
+  # The archive lists one line per article (grouped by year), so a high value
+  # keeps everything on one page. Set to 100 to effectively never paginate.
+  section:
+    paginate: 50
+  # Same value for taxonomy term pages (/tags/python/, /categories/...).
+  list:
+    paginate: 50
+  # Number of posts listed per category card on /categories/ before the
+  # "more >>" link appears (local override: layouts/taxonomy/terms.html).
+  categoriesCardCount: 10
   home:
     rss: 10 # amount of RSS pages
     profile:
       enable: true
       gravatarEmail: "" # Gravatar Email for preferred avatar in home page
-      avatarURL: "/JB5.jpeg"
+      avatarURL: "/JB5_avatar.webp" # 320px wide; the full JB5.jpeg is only used for link cards
       title: "Polymer Mechanics and Machine Learning" # title shown in home page (HTML format is supported)
       subtitle: "Material Models, Experimental Data, Machine Learning."
 
@@ -116,7 +128,7 @@ params:
       disclaimer: "" # disclaimer (HTML format is supported)
     posts:
       enable: true
-      paginate: 6 # special amount of posts in each home posts page
+      paginate: 10 # special amount of posts in each home posts page
       defaultHiddenFromHomePage: false # replaced with hiddenFromHomePage in params.page, default behavior when you don't set "hiddenFromHomePage" in front matter
   social:
     GitHub: "Jorgen-Bergstrom"
