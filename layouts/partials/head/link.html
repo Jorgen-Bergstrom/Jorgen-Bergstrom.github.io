@@ -51,4 +51,31 @@
   .home .home-profile .home-avatar img { width: 10rem; }
   /* More white space before ## (h2) headings */
   .single .content h2 { margin-top: 2.4rem; }
+
+  /* Home-page intro box: the admonition written in content/_index.md.
+     Renders between the profile block and the first article summary. */
+  .home .single .content { margin-top: 1.5rem; }
+  .home .single .content .admonition {
+    margin: 0 0 1.75rem;
+    padding: 0 1.25rem;
+    border-left-width: .35rem;
+    border-radius: .5rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, .07);
+  }
+  .home .single .content .admonition .admonition-title {
+    margin: 0 -1.25rem;
+    padding: .6rem 2rem .6rem 1.7rem;
+    font-size: 1.05rem;
+    letter-spacing: .01em;
+    border-bottom: 1px solid rgba(0, 0, 0, .05);
+  }
+  .home .single .content .admonition .admonition-content { padding: .75rem 0 .85rem; line-height: 1.7; }
+  .home .single .content .admonition .admonition-content p { margin: 0; line-height: 1.7; }
+  .home .single .content .admonition i.icon { top: .85rem; left: .55rem; font-size: .95rem; }
+  .home .single .content .admonition i.details-icon { top: .85rem; right: .6rem; }
+
+  [theme=dark] .home .single .content .admonition { box-shadow: none; }
+  [theme=dark] .home .single .content .admonition .admonition-title {
+    border-bottom-color: rgba(255, 255, 255, .08);
+  }
 </style>
